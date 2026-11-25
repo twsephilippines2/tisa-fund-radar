@@ -1,9 +1,7 @@
 import json
 import os
 from datetime import datetime
-from typing import Literal
 import numpy as np
-import pandas as pd
 from google import genai
 from google.genai import types
 from pydantic import BaseModel, Field
@@ -37,9 +35,23 @@ def calculate_overlap(fund_holdings: dict[str, float], etf_holdings: dict[str, f
     return round(overlap, 1)
 
 
-def calculate_risk_metrics(nav_series: list[float], risk_free_rate: float = 0.015) -> dict:
-    """根據歷史淨值序列計算最大回撤（Max Drawdown）、年化波動度與夏普值"""
+def calculate_risk_metrics(
+    nav_series: list[float],
+    risk_free_rate: float = 0.015,
+    periods_per_year: int = 252,
+) -> dict:
+    """
+    根據歷史淨值序列計算最大回撤（Max Drawdown）、年化波動度與夏普值。
+    periods_per_year：日資料=252、週資料=52、月資料=12。
+    """
     prices = np.array(nav_series, dtype=float)
+    if len(prices) < 2 or np.any(prices <= 0):
+        return {
+            "max_drawdown_pct": 0.0,
+            "annual_volatility_pct": 0.0,
+            "sharpe_ratio": 0.0,
+        }
+
     returns = np.diff(prices) / prices[:-1]
 
     # 最大回撤
@@ -47,10 +59,13 @@ def calculate_risk_metrics(nav_series: list[float], risk_free_rate: float = 0.01
     drawdowns = (prices - cum_max) / cum_max
     max_dd = round(float(np.min(drawdowns)) * 100, 1)
 
-    # 年化波動度與夏普值（假設日淨值 252 交易日）
-    ann_vol = round(float(np.std(returns, ddof=1) * np.sqrt(252)) * 100, 1)
-    ann_ret = float((prices[-1] / prices[0]) ** (252 / len(returns)) - 1)
-    sharpe = round((ann_ret - risk_free_rate) / (ann_vol / 100), 2) if ann_vol > 0 else 0.0
+    # 年化波動度與夏普值
+    vol_decimal = float(np.std(returns, ddof=1) * np.sqrt(periods_per_year))
+    ann_vol = round(vol_decimal * 100, 1)
+
+    total_return = float(prices[-1] / prices[0])
+    ann_ret = total_return ** (periods_per_year / len(returns)) - 1.0
+    sharpe = round((ann_ret - risk_free_rate) / vol_decimal, 2) if vol_decimal > 1e-9 else 0.0
 
     return {
         "max_drawdown_pct": max_dd,
@@ -93,6 +108,8 @@ def generate_ai_insight(client: genai.Client, fund_metrics: dict) -> dict:
 - 與 0050 重疊率：{fund_metrics['overlap_0050_pct']}%
 - 與高股息 ETF (00878) 重疊率：{fund_metrics['overlap_00878_pct']}%
 - 最大回撤：{fund_metrics['risk']['max_drawdown_pct']}%
+- 年化波動度：{fund_metrics['risk']['annual_volatility_pct']}%
+- 夏普值：{fund_metrics['risk']['sharpe_ratio']}
 - 跨月持股變動摘要：{json.dumps(fund_metrics['holdings_diff'], ensure_ascii=False)}
 """
 
@@ -102,7 +119,7 @@ def generate_ai_insight(client: genai.Client, fund_metrics: dict) -> dict:
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
             response_schema=FundAIDiagnosis,
-            temperature=0.2,  # 低溫度確保輸出穩定、不浮誇
+            temperature=0.2,
         ),
     )
     return json.loads(response.text)
@@ -112,13 +129,23 @@ def generate_ai_insight(client: genai.Client, fund_metrics: dict) -> dict:
 # 4. 主流程組裝與輸出 funds.json
 # ==========================================
 def run_pipeline():
-    # 需事先設定環境變數 GEMINI_API_KEY
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-    # 範例輸入資料（實務上改為讀取爬蟲抓下的 raw_holdings_curr.json 與基準 ETF 成分股）
-    etf_0050 = {"2330 台積電": 54.2, "2317 鴻海": 5.1, "2454 聯發科": 4.3, "2308 台達電": 2.1}
-    etf_00878 = {"2382 廣達": 4.8, "3231 緯創": 4.2, "2881 富邦金": 4.5, "2882 國泰金": 4.1}
+    # 範例基準 ETF 成分股權重（%）
+    etf_0050 = {
+        "2330 台積電": 54.2,
+        "2317 鴻海": 5.1,
+        "2454 聯發科": 4.3,
+        "2308 台達電": 2.1,
+    }
+    etf_00878 = {
+        "2382 廣達": 4.8,
+        "3231 緯創": 4.2,
+        "2881 富邦金": 4.5,
+        "2882 國泰金": 4.1,
+    }
 
+    # 多檔基金清單範例（若 nav_history 為月淨值，periods_per_year 設為 12；日淨值則設為 252）
     sample_funds = [
         {
             "id": "YUI116",
@@ -130,10 +157,46 @@ def run_pipeline():
             "ter_pct": 1.15,
             "rule_note": "定期定額滿24個月享0手續費與優惠經理費",
             "tech_exposure_pct": 89.0,
-            "prev_holdings": {"2330 台積電": 9.8, "2454 聯發科": 7.5, "2382 廣達": 5.2, "2303 聯電": 3.1},
-            "curr_holdings": {"2330 台積電": 11.4, "2454 聯發科": 8.6, "2308 台達電": 6.1, "3017 奇鋐": 4.2},
+            "periods_per_year": 12,
+            "prev_holdings": {
+                "2330 台積電": 9.8,
+                "2454 聯發科": 7.5,
+                "2382 廣達": 5.2,
+                "2303 聯電": 3.1,
+            },
+            "curr_holdings": {
+                "2330 台積電": 11.4,
+                "2454 聯發科": 8.6,
+                "2308 台達電": 6.1,
+                "3017 奇鋐": 4.2,
+            },
             "nav_history": [32.0, 34.5, 38.0, 31.2, 35.8, 37.22],
-        }
+        },
+        {
+            "id": "SAMPLE002",
+            "name": "範例穩健平衡與高息配置基金-新台幣R類型",
+            "issuer": "範例投信",
+            "tisa_type": "好好退休",
+            "category": "台股平衡型",
+            "risk_level": "RR3",
+            "ter_pct": 0.85,
+            "rule_note": "定期定額享手續費優惠",
+            "tech_exposure_pct": 38.5,
+            "periods_per_year": 12,
+            "prev_holdings": {
+                "2881 富邦金": 6.0,
+                "2882 國泰金": 5.5,
+                "2330 台積電": 8.0,
+                "2412 中華電": 4.2,
+            },
+            "curr_holdings": {
+                "2881 富邦金": 6.4,
+                "2882 國泰金": 5.8,
+                "2330 台積電": 8.5,
+                "2412 中華電": 4.5,
+            },
+            "nav_history": [15.2, 15.5, 15.8, 15.4, 15.9, 16.2],
+        },
     ]
 
     output_records = []
@@ -152,12 +215,14 @@ def run_pipeline():
             "tsmc_pct": curr_h.get("2330 台積電", 0.0),
             "overlap_0050_pct": calculate_overlap(curr_h, etf_0050),
             "overlap_00878_pct": calculate_overlap(curr_h, etf_00878),
-            "risk": calculate_risk_metrics(f["nav_history"]),
+            "risk": calculate_risk_metrics(
+                f["nav_history"],
+                periods_per_year=f.get("periods_per_year", 252),
+            ),
             "holdings_diff": calculate_holdings_diff(f["prev_holdings"], curr_h),
             "top_holdings": [{"name": k, "weight": v} for k, v in curr_h.items()],
         }
 
-        # 呼叫 Gemini 產出白話診斷與名稱反差標籤
         metrics["ai_diagnosis"] = generate_ai_insight(client, metrics)
         output_records.append(metrics)
 
