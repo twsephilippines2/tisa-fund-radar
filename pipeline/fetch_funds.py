@@ -54,16 +54,6 @@ def infer_tisa_type(name: str) -> str:
     return "TISA專區"
 
 
-def get_table_signature(page) -> str:
-    return page.evaluate(
-        """() => {
-            const rows = Array.from(document.querySelectorAll('fr-fund-table-row'))
-                .filter(r => r.offsetParent !== null);
-            return rows.map(r => (r.innerText || '').trim().replace(/\\s+/g, ' ').slice(0, 50)).join('||');
-        }"""
-    )
-
-
 def parse_visible_pc_rows(page) -> list[dict]:
     rows_data = page.evaluate(
         """() => {
@@ -126,87 +116,9 @@ def parse_visible_pc_rows(page) -> list[dict]:
     return parsed
 
 
-def click_next_arrow_or_page(page, next_page_num: int) -> bool:
-    before_sig = get_table_signature(page)
-    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-    page.wait_for_timeout(800)
-
-    # 印出包含 "/ 6" 或 "/6" 的小範圍父層 HTML，以及頁面上所有按鈕座標與 class
-    info = page.evaluate(
-        """() => {
-            const allNodes = Array.from(document.querySelectorAll('*'));
-            const slashNode = allNodes.find(n =>
-                n.offsetParent !== null &&
-                n.children.length === 0 &&
-                /\\/\\s*6/.test((n.innerText || '').trim())
-            );
-            let pagerBox = null;
-            if (slashNode) {
-                pagerBox = slashNode.parentElement;
-                for (let i = 0; i < 4 && pagerBox && pagerBox.parentElement; i++) {
-                    if ((pagerBox.innerText || '').length > 120) break;
-                    pagerBox = pagerBox.parentElement;
-                }
-            }
-            const btns = Array.from(document.querySelectorAll('button, [role="button"]'))
-                .filter(b => b.offsetParent !== null)
-                .map(b => {
-                    const r = b.getBoundingClientRect();
-                    return {
-                        txt: (b.innerText || '').trim().slice(0, 15),
-                        cls: (b.className || '').toString().slice(0, 70),
-                        x: Math.round(r.x),
-                        y: Math.round(r.y),
-                        w: Math.round(r.width),
-                        h: Math.round(r.height)
-                    };
-                })
-                .filter(b => b.w > 0 && b.h > 0);
-            return {
-                pagerHtml: pagerBox ? pagerBox.outerHTML : 'NO_SLASH_6_FOUND',
-                btns: btns.slice(-20)
-            };
-        }"""
-    )
-    print(f"[DEBUG] PAGER_BOX: {info.get('pagerHtml')}")
-    print(f"[DEBUG] BUTTONS: {json.dumps(info.get('btns'), ensure_ascii=False)}")
-
-    # 嘗試點擊分頁列裡倒數第 2 顆按鈕（通常是下一頁 →）
-    clicked = page.evaluate(
-        """() => {
-            const allNodes = Array.from(document.querySelectorAll('*'));
-            const slashNode = allNodes.find(n =>
-                n.offsetParent !== null &&
-                n.children.length === 0 &&
-                /\\/\\s*6/.test((n.innerText || '').trim())
-            );
-            if (!slashNode) return false;
-            let pagerBox = slashNode.parentElement;
-            for (let i = 0; i < 4 && pagerBox && pagerBox.parentElement; i++) {
-                if ((pagerBox.innerText || '').length > 120) break;
-                pagerBox = pagerBox.parentElement;
-            }
-            if (!pagerBox) return false;
-            const boxBtns = Array.from(pagerBox.querySelectorAll('button, [role="button"], a'))
-                .filter(b => b.offsetParent !== null && b.getBoundingClientRect().width > 0);
-            if (boxBtns.length >= 2) {
-                boxBtns[boxBtns.length - 2].click();
-                return true;
-            }
-            return false;
-        }"""
-    )
-
-    if clicked:
-        for _ in range(15):
-            page.wait_for_timeout(400)
-            if get_table_signature(page) != before_sig:
-                return True
-
-    return False
-
-
 def scrape_fundrich_tisa_list() -> dict:
+    json_endpoints = []
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -218,26 +130,27 @@ def scrape_fundrich_tisa_list() -> dict:
             locale="zh-TW",
         )
         page = context.new_page()
+
+        def on_response(response):
+            ct = (response.headers.get("content-type") or "").lower()
+            if "json" in ct or "api" in response.url.lower() or "fund" in response.url.lower():
+                json_endpoints.append({
+                    "url": response.url,
+                    "method": response.request.method,
+                    "status": response.status,
+                })
+
+        page.on("response", on_response)
         page.goto(TISA_URL, wait_until="domcontentloaded", timeout=60000)
         try:
             page.wait_for_selector("fr-fund-table-row", timeout=25000)
         except Exception:
             pass
-        page.wait_for_timeout(3000)
+        page.wait_for_timeout(3500)
 
-        collected_by_id = {}
-        for page_num in range(1, 10):
-            items = parse_visible_pc_rows(page)
-            added = 0
-            for item in items:
-                fid = item["id"]
-                if fid not in collected_by_id:
-                    collected_by_id[fid] = item
-                    added += 1
-            print(f"[DEBUG] 第 {page_num} 頁解析到 {len(items)} 筆，新增 {added} 檔（累計 {len(collected_by_id)} 檔）")
-
-            if not click_next_arrow_or_page(page, page_num + 1):
-                break
+        items = parse_visible_pc_rows(page)
+        print(f"[DEBUG] 列表解析到 {len(items)} 檔")
+        print(f"[DEBUG] JSON APIs: {json.dumps(json_endpoints[:25], ensure_ascii=False)}")
 
         body_text = page.inner_text("body")
         holdings_date_match = re.search(r"持股資料日[：:\s]*(\d{4}/\d{2}/\d{2})", body_text)
@@ -246,7 +159,7 @@ def scrape_fundrich_tisa_list() -> dict:
 
     return {
         "holdings_as_of": holdings_as_of,
-        "funds": list(collected_by_id.values()),
+        "funds": items,
     }
 
 
