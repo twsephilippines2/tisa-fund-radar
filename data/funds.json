@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-25 10:48",
+  "updated_at": "2026-11-25 11:28",
   "holdings_as_of": "2026/10/31",
-  "total_count": 1,
+  "total_count": 2,
   "funds": [
     {
       "id": "YUI116",
@@ -18,8 +18,8 @@
       "overlap_00878_pct": 0,
       "risk": {
         "max_drawdown_pct": -17.9,
-        "annual_volatility_pct": 201.9,
-        "sharpe_ratio": 1005.12
+        "annual_volatility_pct": 44.0,
+        "sharpe_ratio": 0.96
       },
       "holdings_diff": {
         "added": [
@@ -73,9 +73,62 @@
       ],
       "ai_diagnosis": {
         "style_mismatch_flag": true,
-        "mismatch_badge": "名為高股息實重科技",
-        "plain_summary": "雖名為高股息，但科技股占比高達89.0%，且與高股息ETF重疊率為0%，本質更像科技成長基金。",
-        "radar_action_note": "經理人換入台達電與奇鋐，大幅調節廣達與聯電，持續在科技類股積極換股。"
+        "mismatch_badge": "名稱有股息・持股偏成長",
+        "plain_summary": "科技股占比 89.0%、台積電 11.4%，最大回撤 -17.9%；AI 服務暫時忙碌，稍後重新執行即可更新完整診斷。",
+        "radar_action_note": "AI 摘要暫時忙碌，建議稍後手動重跑或等待下次排程更新。"
+      }
+    },
+    {
+      "id": "SAMPLE002",
+      "name": "範例穩健平衡與高息配置基金-新台幣R類型",
+      "issuer": "範例投信",
+      "tisa_type": "好好退休",
+      "category": "台股平衡型",
+      "risk_level": "RR3",
+      "ter_pct": 0.85,
+      "rule_note": "定期定額享手續費優惠",
+      "tech_exposure_pct": 38.5,
+      "tsmc_pct": 8.5,
+      "overlap_0050_pct": 8.5,
+      "overlap_00878_pct": 8.6,
+      "risk": {
+        "max_drawdown_pct": -2.5,
+        "annual_volatility_pct": 7.7,
+        "sharpe_ratio": 1.96
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.5
+          }
+        ]
+      },
+      "top_holdings": [
+        {
+          "name": "2881 富邦金",
+          "weight": 6.4
+        },
+        {
+          "name": "2882 國泰金",
+          "weight": 5.8
+        },
+        {
+          "name": "2330 台積電",
+          "weight": 8.5
+        },
+        {
+          "name": "2412 中華電",
+          "weight": 4.5
+        }
+      ],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "待AI更新",
+        "plain_summary": "科技股占比 38.5%、台積電 8.5%，最大回撤 -2.5%；AI 服務暫時忙碌，稍後重新執行即可更新完整診斷。",
+        "radar_action_note": "AI 摘要暫時忙碌，建議稍後手動重跑或等待下次排程更新。"
       }
     }
   ]
