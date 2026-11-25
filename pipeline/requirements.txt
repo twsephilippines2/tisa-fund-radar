@@ -1,0 +1,12 @@
+tisa-fund-radar/
+├── .github/
+│   └── workflows/
+│       └── update-funds.yml    # GitHub Actions 排程（每日/每月自動執行）
+├── pipeline/
+│   ├── build_funds.py          # 核心管線：計算重疊率/回撤 + 呼叫 Gemini 生成白話診斷
+│   └── requirements.txt        # google-genai, pandas, numpy, pydantic
+├── data/
+│   ├── raw_holdings_prev.json  # 上期持股快照（用於比對跨月換股雷達）
+│   ├── raw_holdings_curr.json  # 本期抓取的基金與 ETF 持股明細
+│   └── funds.json              # 最終輸出給前端網頁讀取的靜態資料
+└── index.html                  # 剛才完成的互動前端網頁（改為 fetch('./data/funds.json')）
