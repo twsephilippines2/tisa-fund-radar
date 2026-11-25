@@ -54,6 +54,50 @@ def infer_tisa_type(name: str) -> str:
     return "TISA專區"
 
 
+def extract_funds_from_any_json(data, results: dict):
+    if isinstance(data, list):
+        for item in data:
+            extract_funds_from_any_json(item, results)
+    elif isinstance(data, dict):
+        code = (
+            data.get("fundCode")
+            or data.get("FundCode")
+            or data.get("fundId")
+            or data.get("code")
+            or ""
+        )
+        name = (
+            data.get("fundName")
+            or data.get("FundName")
+            or data.get("name")
+            or data.get("shortName")
+            or ""
+        )
+        if isinstance(code, str) and isinstance(name, str):
+            code_clean = code.strip().upper()
+            name_clean = name.strip()
+            if re.fullmatch(r"[A-Za-z0-9]{4,10}", code_clean) and "基金" in name_clean:
+                rr = str(data.get("riskLevel") or data.get("rr") or data.get("risk") or "RR4").upper()
+                if not re.fullmatch(r"RR[1-5]", rr):
+                    rr = "RR4"
+                issuer = (
+                    data.get("companyName")
+                    or data.get("issuerName")
+                    or data.get("fundCompany")
+                    or infer_issuer(name_clean)
+                )
+                results[code_clean] = {
+                    "id": code_clean,
+                    "name": name_clean,
+                    "issuer": str(issuer).strip() or infer_issuer(name_clean),
+                    "tisa_type": infer_tisa_type(name_clean),
+                    "risk_level": rr,
+                }
+        for val in data.values():
+            if isinstance(val, (dict, list)):
+                extract_funds_from_any_json(val, results)
+
+
 def parse_visible_pc_rows(page) -> list[dict]:
     rows_data = page.evaluate(
         """() => {
@@ -117,7 +161,8 @@ def parse_visible_pc_rows(page) -> list[dict]:
 
 
 def scrape_fundrich_tisa_list() -> dict:
-    json_endpoints = []
+    xhr_calls = []
+    api_collected: dict[str, dict] = {}
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -132,13 +177,22 @@ def scrape_fundrich_tisa_list() -> dict:
         page = context.new_page()
 
         def on_response(response):
-            ct = (response.headers.get("content-type") or "").lower()
-            if "json" in ct or "api" in response.url.lower() or "fund" in response.url.lower():
-                json_endpoints.append({
-                    "url": response.url,
+            rtype = response.request.resource_type
+            url = response.url
+            if rtype in {"xhr", "fetch"} or ("fundrich.com.tw" in url and not re.search(r"\.(js|css|png|jpg|jpeg|svg|woff2?|ico)(\?|$)", url, re.I)):
+                xhr_calls.append({
+                    "type": rtype,
                     "method": response.request.method,
                     "status": response.status,
+                    "url": url,
                 })
+                try:
+                    raw_txt = response.text()
+                    if raw_txt.strip().startswith(("{", "[")):
+                        parsed_json = json.loads(raw_txt)
+                        extract_funds_from_any_json(parsed_json, api_collected)
+                except Exception:
+                    pass
 
         page.on("response", on_response)
         page.goto(TISA_URL, wait_until="domcontentloaded", timeout=60000)
@@ -146,11 +200,21 @@ def scrape_fundrich_tisa_list() -> dict:
             page.wait_for_selector("fr-fund-table-row", timeout=25000)
         except Exception:
             pass
-        page.wait_for_timeout(3500)
+        page.wait_for_timeout(4000)
 
-        items = parse_visible_pc_rows(page)
-        print(f"[DEBUG] 列表解析到 {len(items)} 檔")
-        print(f"[DEBUG] JSON APIs: {json.dumps(json_endpoints[:25], ensure_ascii=False)}")
+        # 捲動到底部觸發延遲請求
+        try:
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        except Exception:
+            pass
+        page.wait_for_timeout(2000)
+
+        dom_items = parse_visible_pc_rows(page)
+        print(f"[DEBUG] DOM 首屏解析到 {len(dom_items)} 檔，API 攔截到 {len(api_collected)} 檔")
+        print(f"[DEBUG] XHR/FETCH: {json.dumps(xhr_calls, ensure_ascii=False)}")
+
+        merged_map = {item["id"]: item for item in dom_items}
+        merged_map.update(api_collected)
 
         body_text = page.inner_text("body")
         holdings_date_match = re.search(r"持股資料日[：:\s]*(\d{4}/\d{2}/\d{2})", body_text)
@@ -159,7 +223,7 @@ def scrape_fundrich_tisa_list() -> dict:
 
     return {
         "holdings_as_of": holdings_as_of,
-        "funds": items,
+        "funds": list(merged_map.values()),
     }
 
 
