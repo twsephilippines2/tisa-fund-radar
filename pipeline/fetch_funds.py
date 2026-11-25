@@ -56,7 +56,7 @@ def infer_tisa_type(name: str) -> str:
 
 
 def extract_funds_from_payload(data, results: dict):
-    """遞迴掃描 FundTableInfo 回傳結構，擷取基金代碼、名稱、風險等級與其他資訊"""
+    """遞迴掃描 FundTableInfo 回傳結構，擷取基金代碼、名稱與風險等級"""
     if isinstance(data, list):
         for item in data:
             extract_funds_from_payload(item, results)
@@ -93,10 +93,6 @@ def extract_funds_from_payload(data, results: dict):
                     "issuer": str(issuer).strip() or infer_issuer(name_clean),
                     "tisa_type": infer_tisa_type(name_clean),
                     "risk_level": rr,
-                    "nav": data.get("nav") or data.get("netWorth") or data.get("price"),
-                    "nav_date": data.get("navDate") or data.get("priceDate") or data.get("date"),
-                    "currency": data.get("currency") or data.get("curr") or "",
-                    "fund_size": data.get("fundSize") or data.get("size"),
                 }
         for val in data.values():
             if isinstance(val, (dict, list)):
@@ -158,7 +154,6 @@ def scrape_fundrich_tisa_list() -> dict:
         }
         req_headers = captured_headers or {"Content-Type": "application/json"}
 
-        # 依 currentPage 1..10 逐頁請求 FundTableInfo，直到抓滿或無新資料
         for page_num in range(1, 11):
             payload_copy = json.loads(json.dumps(base_payload))
             if isinstance(payload_copy.get("data"), dict):
@@ -185,12 +180,10 @@ def scrape_fundrich_tisa_list() -> dict:
                 )
                 if resp_text and resp_text.strip().startswith(("{", "[")):
                     extract_funds_from_payload(json.loads(resp_text), api_collected)
-            except Exception as e:
-                print(f"[DEBUG] currentPage={page_num} 請求失敗：{e}")
+            except Exception:
                 break
 
             added = len(api_collected) - before_cnt
-            print(f"[DEBUG] currentPage={page_num} 新增 {added} 檔（累計 {len(api_collected)} 檔）")
             if page_num > 1 and added == 0:
                 break
 
