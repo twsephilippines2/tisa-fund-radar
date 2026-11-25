@@ -128,37 +128,45 @@ def parse_visible_pc_rows(page) -> list[dict]:
 
 
 def click_next_arrow_or_page(page, next_page_num: int) -> bool:
-    """針對基富通 `/ 6` 分頁列點擊下一頁箭頭（→）或切換頁碼下拉選單"""
     before_sig = get_table_signature(page)
     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-    page.wait_for_timeout(600)
+    page.wait_for_timeout(800)
 
-    # 1. 優先尋找分頁列中的「下一頁」箭頭按鈕（排除最右邊的「最後一頁」按鈕）
+    pager_html = page.evaluate(
+        """() => {
+            const el = Array.from(document.querySelectorAll('*')).find(n =>
+                n.children.length === 0 && /\\/\\s*\\d+/.test((n.innerText || '').trim())
+            );
+            if (!el) return 'NO_PAGER_FOUND';
+            let box = el.parentElement;
+            for (let i = 0; i < 3 && box && box.parentElement; i++) {
+                box = box.parentElement;
+            }
+            return box ? box.outerHTML : el.outerHTML;
+        }"""
+    )
+    print(f"[DEBUG] PAGER HTML: {pager_html}")
+
+    # 嘗試點擊分頁區塊內倒數第二個可點擊元素（通常對應「下一頁 →」，最後一個是「最末頁 →|」）
     clicked = page.evaluate(
         """() => {
-            const buttons = Array.from(document.querySelectorAll('button, a, [role="button"]'))
-                .filter(el => el.offsetParent !== null);
-            // 找出包含 "/ 6" 或 "/6" 的分頁容器附近按鈕
-            const pageLabelEl = Array.from(document.querySelectorAll('*')).find(el =>
-                el.children.length === 0 && /\\/\\s*\\d+/.test((el.innerText || '').trim())
+            const el = Array.from(document.querySelectorAll('*')).find(n =>
+                n.children.length === 0 && /\\/\\s*\\d+/.test((n.innerText || '').trim())
             );
-            const refY = pageLabelEl ? pageLabelEl.getBoundingClientRect().y : null;
-
-            const candidates = buttons.filter(el => {
-                const r = el.getBoundingClientRect();
-                if (r.width <= 0 || r.height <= 0 || r.width > 90 || r.height > 90) return false;
-                if (refY !== null && Math.abs(r.y - refY) > 60) return false;
-                const txt = (el.innerText || '').trim();
-                const aria = (el.getAttribute('aria-label') || '').toLowerCase();
-                const disabled = el.disabled || el.getAttribute('aria-disabled') === 'true' || /disabled/i.test(el.className || '');
-                if (disabled) return false;
-                return txt === '→' || txt === '>' || txt === '›' || aria.includes('next') || aria.includes('下一頁');
-            });
-
-            if (candidates.length > 0) {
-                // 若有多個箭頭，通常倒數第二個是「下一頁 →」，最後一個是「最末頁 →|」
-                const target = candidates.length >= 2 ? candidates[candidates.length - 2] : candidates[0];
-                target.click();
+            if (!el) return false;
+            let box = el.parentElement;
+            for (let i = 0; i < 4 && box && box.parentElement; i++) {
+                box = box.parentElement;
+            }
+            if (!box) return false;
+            const clickables = Array.from(box.querySelectorAll('button, a, [role="button"], span, i, svg'))
+                .filter(node => {
+                    const r = node.getBoundingClientRect();
+                    return r.width > 10 && r.height > 10 && node.offsetParent !== null;
+                });
+            if (clickables.length >= 2) {
+                const target = clickables[clickables.length - 2];
+                (target.closest('button, a, [role="button"]') || target).click();
                 return true;
             }
             return false;
@@ -166,26 +174,10 @@ def click_next_arrow_or_page(page, next_page_num: int) -> bool:
     )
 
     if clicked:
-        for _ in range(10):
+        for _ in range(12):
             page.wait_for_timeout(400)
             if get_table_signature(page) != before_sig:
                 return True
-
-    # 2. 若頁碼是原生 <select> 下拉選單，直接選擇 next_page_num
-    try:
-        selects = page.locator("select")
-        for i in range(selects.count()):
-            sel = selects.nth(i)
-            if sel.is_visible(timeout=300):
-                options = sel.locator("option").all_inner_texts()
-                if str(next_page_num) in [o.strip() for o in options]:
-                    sel.select_option(str(next_page_num))
-                    for _ in range(10):
-                        page.wait_for_timeout(400)
-                        if get_table_signature(page) != before_sig:
-                            return True
-    except Exception:
-        pass
 
     return False
 
