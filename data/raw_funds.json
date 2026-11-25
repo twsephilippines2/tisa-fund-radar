@@ -1,0 +1,22 @@
+{
+  "fetched_at": "2026-11-25 12:14",
+  "source": "基富通 FundRich TISA 專區",
+  "source_url": "https://www.fundrich.com.tw/themeFund/promotionDetail?type=root.TISA.FundList_Web",
+  "holdings_as_of": "2026/10/31",
+  "total_count": 0,
+  "etf_benchmarks": {
+    "0050": {
+      "2330 台積電": 54.2,
+      "2317 鴻海": 5.1,
+      "2454 聯發科": 4.3,
+      "2308 台達電": 2.1
+    },
+    "00878": {
+      "2382 廣達": 4.8,
+      "3231 緯創": 4.2,
+      "2881 富邦金": 4.5,
+      "2882 國泰金": 4.1
+    }
+  },
+  "funds": []
+}
