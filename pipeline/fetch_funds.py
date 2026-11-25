@@ -65,7 +65,6 @@ def get_table_signature(page) -> str:
 
 
 def parse_visible_pc_rows(page) -> list[dict]:
-    """解析目前可見的 fr-fund-table-row 列，擷取基金代碼、完整名稱與風險等級"""
     rows_data = page.evaluate(
         """() => {
             const rows = Array.from(document.querySelectorAll('fr-fund-table-row'));
@@ -132,60 +131,67 @@ def click_next_arrow_or_page(page, next_page_num: int) -> bool:
     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
     page.wait_for_timeout(800)
 
-    pager_debug = page.evaluate(
+    # 印出包含 "/ 6" 或 "/6" 的小範圍父層 HTML，以及頁面上所有按鈕座標與 class
+    info = page.evaluate(
         """() => {
-            const els = Array.from(document.querySelectorAll('button, a, [role="button"], select'));
-            return els
-                .filter(el => el.offsetParent !== null)
-                .map(el => {
-                    const r = el.getBoundingClientRect();
+            const allNodes = Array.from(document.querySelectorAll('*'));
+            const slashNode = allNodes.find(n =>
+                n.offsetParent !== null &&
+                n.children.length === 0 &&
+                /\\/\\s*6/.test((n.innerText || '').trim())
+            );
+            let pagerBox = null;
+            if (slashNode) {
+                pagerBox = slashNode.parentElement;
+                for (let i = 0; i < 4 && pagerBox && pagerBox.parentElement; i++) {
+                    if ((pagerBox.innerText || '').length > 120) break;
+                    pagerBox = pagerBox.parentElement;
+                }
+            }
+            const btns = Array.from(document.querySelectorAll('button, [role="button"]'))
+                .filter(b => b.offsetParent !== null)
+                .map(b => {
+                    const r = b.getBoundingClientRect();
                     return {
-                        tag: el.tagName,
-                        txt: (el.innerText || '').trim().replace(/\\s+/g, ' ').slice(0, 20),
-                        aria: el.getAttribute('aria-label') || '',
-                        title: el.getAttribute('title') || '',
-                        cls: (el.className || '').toString().slice(0, 50),
+                        txt: (b.innerText || '').trim().slice(0, 15),
+                        cls: (b.className || '').toString().slice(0, 70),
+                        x: Math.round(r.x),
                         y: Math.round(r.y),
                         w: Math.round(r.width),
                         h: Math.round(r.height)
                     };
                 })
-                .filter(x => x.y > 400 && x.w > 0 && x.h > 0 && x.w <= 120 && x.h <= 90)
-                .slice(-25);
+                .filter(b => b.w > 0 && b.h > 0);
+            return {
+                pagerHtml: pagerBox ? pagerBox.outerHTML : 'NO_SLASH_6_FOUND',
+                btns: btns.slice(-20)
+            };
         }"""
     )
-    print(f"[DEBUG] BOTTOM CONTROLS (page {next_page_num - 1} -> {next_page_num}): {json.dumps(pager_debug, ensure_ascii=False)}")
+    print(f"[DEBUG] PAGER_BOX: {info.get('pagerHtml')}")
+    print(f"[DEBUG] BUTTONS: {json.dumps(info.get('btns'), ensure_ascii=False)}")
 
+    # 嘗試點擊分頁列裡倒數第 2 顆按鈕（通常是下一頁 →）
     clicked = page.evaluate(
         """() => {
-            const els = Array.from(document.querySelectorAll('button, a, [role="button"]'))
-                .filter(el => el.offsetParent !== null);
-            for (const el of els) {
-                const r = el.getBoundingClientRect();
-                if (r.y < 400 || r.width <= 0 || r.height <= 0 || r.width > 100 || r.height > 80) continue;
-                const disabled = el.disabled || el.getAttribute('aria-disabled') === 'true' || /disabled/i.test(el.className || '');
-                if (disabled) continue;
-
-                const txt = (el.innerText || '').trim();
-                const aria = (el.getAttribute('aria-label') || '').toLowerCase();
-                const title = (el.getAttribute('title') || '').toLowerCase();
-                const cls = (el.className || '').toString().toLowerCase();
-                const html = (el.innerHTML || '').toLowerCase();
-
-                const isPrev = aria.includes('prev') || aria.includes('上一頁') || title.includes('上一頁') || txt === '←' || txt === '<' || txt === '‹' || txt === '|←';
-                if (isPrev) continue;
-
-                const isNext = (
-                    aria.includes('next') || aria.includes('下一頁') ||
-                    title.includes('下一頁') || title.includes('next') ||
-                    cls.includes('next') ||
-                    txt === '→' || txt === '>' || txt === '›' ||
-                    html.includes('next') || html.includes('arrow-right') || html.includes('chevron-right')
-                );
-                if (isNext) {
-                    el.click();
-                    return true;
-                }
+            const allNodes = Array.from(document.querySelectorAll('*'));
+            const slashNode = allNodes.find(n =>
+                n.offsetParent !== null &&
+                n.children.length === 0 &&
+                /\\/\\s*6/.test((n.innerText || '').trim())
+            );
+            if (!slashNode) return false;
+            let pagerBox = slashNode.parentElement;
+            for (let i = 0; i < 4 && pagerBox && pagerBox.parentElement; i++) {
+                if ((pagerBox.innerText || '').length > 120) break;
+                pagerBox = pagerBox.parentElement;
+            }
+            if (!pagerBox) return false;
+            const boxBtns = Array.from(pagerBox.querySelectorAll('button, [role="button"], a'))
+                .filter(b => b.offsetParent !== null && b.getBoundingClientRect().width > 0);
+            if (boxBtns.length >= 2) {
+                boxBtns[boxBtns.length - 2].click();
+                return true;
             }
             return false;
         }"""
@@ -197,26 +203,10 @@ def click_next_arrow_or_page(page, next_page_num: int) -> bool:
             if get_table_signature(page) != before_sig:
                 return True
 
-    try:
-        selects = page.locator("select")
-        for i in range(selects.count()):
-            sel = selects.nth(i)
-            if sel.is_visible(timeout=300):
-                opts = [o.strip() for o in sel.locator("option").all_inner_texts()]
-                if str(next_page_num) in opts:
-                    sel.select_option(str(next_page_num))
-                    for _ in range(15):
-                        page.wait_for_timeout(400)
-                        if get_table_signature(page) != before_sig:
-                            return True
-    except Exception:
-        pass
-
     return False
 
 
 def scrape_fundrich_tisa_list() -> dict:
-    """載入基富通 TISA 專區並跨分頁抓取基金清單"""
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
