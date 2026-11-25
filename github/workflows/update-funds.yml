@@ -1,9 +1,10 @@
 name: Update TISA Funds JSON with Gemini
 
 on:
+  workflow_dispatch: {}
   schedule:
-    - cron: '30 23 * * 0' # 每週日 UTC 23:30（台灣時間週一早上 07:30）自動執行
-  workflow_dispatch:      # 支援在 GitHub 網頁上手動一鍵觸發
+    # 每天台灣時間 08:30（UTC 00:30）自動跑一次
+    - cron: "30 0 * * *"
 
 permissions:
   contents: write
@@ -12,25 +13,37 @@ jobs:
   build-data:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install google-genai pandas numpy pydantic
+        run: |
+          pip install -r pipeline/requirements.txt
+          pip install playwright beautifulsoup4 requests
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Fetch TISA funds from FundRich
+        run: python pipeline/fetch_funds.py
 
       - name: Run data & AI pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python pipeline/build_funds.py
 
-      - name: Commit updated funds.json
+      - name: Commit updated data files
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/funds.json
-          git diff --staged --quiet || git commit -m "chore: update TISA funds data and AI insights"
-          git push
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/raw_funds.json data/funds.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: daily update TISA funds data and AI insights"
+            git push
+          fi
