@@ -1,0 +1,82 @@
+{
+  "updated_at": "2026-11-25 10:48",
+  "holdings_as_of": "2026/10/31",
+  "total_count": 1,
+  "funds": [
+    {
+      "id": "YUI116",
+      "name": "元大台灣高股息優質龍頭證券投資信託基金-新台幣R類型",
+      "issuer": "元大投信",
+      "tisa_type": "好好退休",
+      "category": "台股主動型",
+      "risk_level": "RR4",
+      "ter_pct": 1.15,
+      "rule_note": "定期定額滿24個月享0手續費與優惠經理費",
+      "tech_exposure_pct": 89.0,
+      "tsmc_pct": 11.4,
+      "overlap_0050_pct": 17.8,
+      "overlap_00878_pct": 0,
+      "risk": {
+        "max_drawdown_pct": -17.9,
+        "annual_volatility_pct": 201.9,
+        "sharpe_ratio": 1005.12
+      },
+      "holdings_diff": {
+        "added": [
+          "2308 台達電",
+          "3017 奇鋐"
+        ],
+        "removed": [
+          "2382 廣達",
+          "2303 聯電"
+        ],
+        "top_weight_changes": [
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 6.1
+          },
+          {
+            "stock": "2382 廣達",
+            "diff_pct": -5.2
+          },
+          {
+            "stock": "3017 奇鋐",
+            "diff_pct": 4.2
+          },
+          {
+            "stock": "2303 聯電",
+            "diff_pct": -3.1
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.6
+          }
+        ]
+      },
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 11.4
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 8.6
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 6.1
+        },
+        {
+          "name": "3017 奇鋐",
+          "weight": 4.2
+        }
+      ],
+      "ai_diagnosis": {
+        "style_mismatch_flag": true,
+        "mismatch_badge": "名為高股息實重科技",
+        "plain_summary": "雖名為高股息，但科技股占比高達89.0%，且與高股息ETF重疊率為0%，本質更像科技成長基金。",
+        "radar_action_note": "經理人換入台達電與奇鋐，大幅調節廣達與聯電，持續在科技類股積極換股。"
+      }
+    }
+  ]
+}
