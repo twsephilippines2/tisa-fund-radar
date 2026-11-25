@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25 15:35",
+  "updated_at": "2026-11-25 15:46",
   "holdings_as_of": "2026/10/31",
   "source": "基富通 FundRich TISA 專區",
   "total_count": 103,
@@ -9,30 +9,48 @@
       "name": "【TISA級別】兆豐全球證券投資信託基金-TISA",
       "issuer": "兆豐投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 55.9,
+      "tsmc_pct": 3.3,
+      "overlap_0050_pct": 6.3,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -20.59,
+        "annual_volatility_pct": 24.12,
+        "sharpe_ratio": -1.13
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.1
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.3
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.0
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 55.9%、台積電 3.3%，0050 重疊 6.3%、最大回撤 -20.59%。",
+        "radar_action_note": "年化波動度 24.12%，留意集中度與回撤風險。"
       }
     },
     {
@@ -40,30 +58,60 @@
       "name": "【TISA級別】施羅德台灣樂活中小基金 - TISA類型",
       "issuer": "施羅德投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR5",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 35.6,
+      "tsmc_pct": 17.1,
+      "overlap_0050_pct": 25.9,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -29.71,
+        "annual_volatility_pct": 26.85,
+        "sharpe_ratio": 0.28
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -1.5
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.0
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 17.1
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 3.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.0
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR5），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 35.6%、台積電 17.1%，0050 重疊 25.9%、最大回撤 -29.71%。",
+        "radar_action_note": "年化波動度 26.85%，留意集中度與回撤風險。"
       }
     },
     {
@@ -71,30 +119,64 @@
       "name": "【好好退休】元大台灣高股息優質龍頭證券投資信託基金-新台幣R類型",
       "issuer": "元大投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 25.1,
+      "tsmc_pct": 8.9,
+      "overlap_0050_pct": 18.0,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -13.85,
+        "annual_volatility_pct": 23.54,
+        "sharpe_ratio": 1.44
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.7
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -1.2
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -0.7
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.9
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 6.4
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.4
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 1.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 25.1%、台積電 8.9%，0050 重疊 18.0%、最大回撤 -13.85%。",
+        "radar_action_note": "年化波動度 23.54%，留意集中度與回撤風險。"
       }
     },
     {
@@ -102,30 +184,48 @@
       "name": "【TISA級別】野村優質基金-TISA類型",
       "issuer": "野村投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 27.4,
+      "tsmc_pct": 8.8,
+      "overlap_0050_pct": 10.1,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -21.51,
+        "annual_volatility_pct": 24.48,
+        "sharpe_ratio": 1.07
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.8
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.8
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 27.4%、台積電 8.8%，0050 重疊 10.1%、最大回撤 -21.51%。",
+        "radar_action_note": "年化波動度 24.48%，留意集中度與回撤風險。"
       }
     },
     {
@@ -133,30 +233,39 @@
       "name": "【TISA級別】景順潛力基金TISA類型新台幣",
       "issuer": "景順投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 49.8,
+      "tsmc_pct": 2.7,
+      "overlap_0050_pct": 4.0,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.74,
+        "annual_volatility_pct": 21.45,
+        "sharpe_ratio": 2.2
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
         "top_weight_changes": []
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 49.8%、台積電 2.7%，0050 重疊 4.0%、最大回撤 -12.74%。",
+        "radar_action_note": "年化波動度 21.45%，留意集中度與回撤風險。"
       }
     },
     {
@@ -164,30 +273,64 @@
       "name": "【TISA級別】凱基台灣精五門基金－新台幣TISA",
       "issuer": "凱基投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 33.5,
+      "tsmc_pct": 13.7,
+      "overlap_0050_pct": 21.3,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.07,
+        "annual_volatility_pct": 23.59,
+        "sharpe_ratio": 1.61
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -2.0
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.6
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.5
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 13.7
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 2.4
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.1
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 33.5%、台積電 13.7%，0050 重疊 21.3%、最大回撤 -12.07%。",
+        "radar_action_note": "年化波動度 23.59%，留意集中度與回撤風險。"
       }
     },
     {
@@ -195,30 +338,60 @@
       "name": "【TISA級別】永豐中小證券投資信託基金TISA類型",
       "issuer": "永豐投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR5",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 25.0,
+      "tsmc_pct": 6.8,
+      "overlap_0050_pct": 16.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.72,
+        "annual_volatility_pct": 27.02,
+        "sharpe_ratio": 0.66
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -2.0
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -1.5
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.8
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 6.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.5
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR5），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 25.0%、台積電 6.8%，0050 重疊 16.5%、最大回撤 -12.72%。",
+        "radar_action_note": "年化波動度 27.02%，留意集中度與回撤風險。"
       }
     },
     {
@@ -226,30 +399,44 @@
       "name": "【TISA級別】兆豐國民基金-TISA",
       "issuer": "兆豐投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 50.5,
+      "tsmc_pct": 4.6,
+      "overlap_0050_pct": 6.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -14.91,
+        "annual_volatility_pct": 23.86,
+        "sharpe_ratio": 0.15
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.3
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 50.5%、台積電 4.6%，0050 重疊 6.5%、最大回撤 -14.91%。",
+        "radar_action_note": "年化波動度 23.86%，留意集中度與回撤風險。"
       }
     },
     {
@@ -257,30 +444,64 @@
       "name": "【TISA級別】玉山中小型股證券投資信託基金—TISA級別",
       "issuer": "玉山投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR5",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 44.8,
+      "tsmc_pct": 16.5,
+      "overlap_0050_pct": 25.3,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -13.48,
+        "annual_volatility_pct": 27.72,
+        "sharpe_ratio": 1.29
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.9
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -0.9
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.6
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": 0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 16.5
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 4.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.1
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.8
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR5），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 44.8%、台積電 16.5%，0050 重疊 25.3%、最大回撤 -13.48%。",
+        "radar_action_note": "年化波動度 27.72%，留意集中度與回撤風險。"
       }
     },
     {
@@ -288,30 +509,44 @@
       "name": "【好好退休】玉山金滿意證券投資信託基金—R級別",
       "issuer": "玉山投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 25.4,
+      "tsmc_pct": 6.6,
+      "overlap_0050_pct": 7.7,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -10.16,
+        "annual_volatility_pct": 22.05,
+        "sharpe_ratio": 1.85
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 25.4%、台積電 6.6%，0050 重疊 7.7%、最大回撤 -10.16%。",
+        "radar_action_note": "年化波動度 22.05%，留意集中度與回撤風險。"
       }
     },
     {
@@ -319,30 +554,48 @@
       "name": "【TISA級別】復華全方位基金TISA類型",
       "issuer": "復華投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 31.9,
+      "tsmc_pct": 5.0,
+      "overlap_0050_pct": 6.2,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -31.67,
+        "annual_volatility_pct": 23.46,
+        "sharpe_ratio": -1.78
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.4
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.3
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.0
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 31.9%、台積電 5.0%，0050 重疊 6.2%、最大回撤 -31.67%。",
+        "radar_action_note": "年化波動度 23.46%，留意集中度與回撤風險。"
       }
     },
     {
@@ -350,30 +603,48 @@
       "name": "【TISA級別】玉山高成長證券投資信託基金—TISA級別",
       "issuer": "玉山投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 51.6,
+      "tsmc_pct": 2.5,
+      "overlap_0050_pct": 4.2,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -14.18,
+        "annual_volatility_pct": 23.99,
+        "sharpe_ratio": 1.48
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.8
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.5
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.7
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 51.6%、台積電 2.5%，0050 重疊 4.2%、最大回撤 -14.18%。",
+        "radar_action_note": "年化波動度 23.99%，留意集中度與回撤風險。"
       }
     },
     {
@@ -381,30 +652,44 @@
       "name": "【TISA級別】第一金創新趨勢基金-TISA類型",
       "issuer": "第一金投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 29.4,
+      "tsmc_pct": 5.1,
+      "overlap_0050_pct": 6.2,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -8.46,
+        "annual_volatility_pct": 22.52,
+        "sharpe_ratio": 2.57
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.3
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 29.4%、台積電 5.1%，0050 重疊 6.2%、最大回撤 -8.46%。",
+        "radar_action_note": "年化波動度 22.52%，留意集中度與回撤風險。"
       }
     },
     {
@@ -412,30 +697,64 @@
       "name": "【TISA級別】國泰台灣高股息基金TISA",
       "issuer": "國泰投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 44.4,
+      "tsmc_pct": 18.6,
+      "overlap_0050_pct": 27.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -27.24,
+        "annual_volatility_pct": 22.31,
+        "sharpe_ratio": -1.31
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.9
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.5
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": 1.3
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 18.6
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 3.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.1
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 44.4%、台積電 18.6%，0050 重疊 27.5%、最大回撤 -27.24%。",
+        "radar_action_note": "年化波動度 22.31%，留意集中度與回撤風險。"
       }
     },
     {
@@ -443,30 +762,60 @@
       "name": "【TISA級別】富邦精銳中小基金-TISA級別",
       "issuer": "富邦投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR5",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 33.0,
+      "tsmc_pct": 8.5,
+      "overlap_0050_pct": 17.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -21.31,
+        "annual_volatility_pct": 27.31,
+        "sharpe_ratio": -0.32
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -2.1
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.7
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.5
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 4.8
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.2
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.5
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR5），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 33.0%、台積電 8.5%，0050 重疊 17.6%、最大回撤 -21.31%。",
+        "radar_action_note": "年化波動度 27.31%，留意集中度與回撤風險。"
       }
     },
     {
@@ -474,30 +823,48 @@
       "name": "【TISA級別】富蘭克林華美第一富證券投資信託基金-TISA類型",
       "issuer": "TISA合作投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 22.1,
+      "tsmc_pct": 4.8,
+      "overlap_0050_pct": 7.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -16.87,
+        "annual_volatility_pct": 23.02,
+        "sharpe_ratio": 0.61
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.9
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.8
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.7
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 22.1%、台積電 4.8%，0050 重疊 7.5%、最大回撤 -16.87%。",
+        "radar_action_note": "年化波動度 23.02%，留意集中度與回撤風險。"
       }
     },
     {
@@ -505,30 +872,60 @@
       "name": "【TISA級別】統一台灣動力基金-TISA類型",
       "issuer": "統一投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 35.8,
+      "tsmc_pct": 17.0,
+      "overlap_0050_pct": 27.0,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -16.86,
+        "annual_volatility_pct": 22.18,
+        "sharpe_ratio": -0.44
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -2.1
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": 1.8
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 17.0
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 5.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.8
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 35.8%、台積電 17.0%，0050 重疊 27.0%、最大回撤 -16.86%。",
+        "radar_action_note": "年化波動度 22.18%，留意集中度與回撤風險。"
       }
     },
     {
@@ -536,30 +933,44 @@
       "name": "【TISA級別】統一大滿貫基金-TISA類型",
       "issuer": "統一投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 36.4,
+      "tsmc_pct": 5.8,
+      "overlap_0050_pct": 7.9,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -25.01,
+        "annual_volatility_pct": 24.46,
+        "sharpe_ratio": -0.86
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.8
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 36.4%、台積電 5.8%，0050 重疊 7.9%、最大回撤 -25.01%。",
+        "radar_action_note": "年化波動度 24.46%，留意集中度與回撤風險。"
       }
     },
     {
@@ -567,30 +978,48 @@
       "name": "【好好退休】滙豐龍鳳證券投資信託基金-R類型",
       "issuer": "TISA合作投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 42.4,
+      "tsmc_pct": 3.6,
+      "overlap_0050_pct": 5.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -28.76,
+        "annual_volatility_pct": 24.46,
+        "sharpe_ratio": -0.8
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.3
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 42.4%、台積電 3.6%，0050 重疊 5.5%、最大回撤 -28.76%。",
+        "radar_action_note": "年化波動度 24.46%，留意集中度與回撤風險。"
       }
     },
     {
@@ -598,30 +1027,44 @@
       "name": "【TISA級別】永豐永豐證券投資信託基金TISA類型",
       "issuer": "永豐投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 36.2,
+      "tsmc_pct": 2.1,
+      "overlap_0050_pct": 4.4,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -28.68,
+        "annual_volatility_pct": 23.94,
+        "sharpe_ratio": -0.19
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.3
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 36.2%、台積電 2.1%，0050 重疊 4.4%、最大回撤 -28.68%。",
+        "radar_action_note": "年化波動度 23.94%，留意集中度與回撤風險。"
       }
     },
     {
@@ -629,30 +1072,44 @@
       "name": "【好好退休】國泰小龍證券投資信託基金R",
       "issuer": "國泰投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 42.3,
+      "tsmc_pct": 4.6,
+      "overlap_0050_pct": 6.2,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -11.05,
+        "annual_volatility_pct": 20.97,
+        "sharpe_ratio": 2.89
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 42.3%、台積電 4.6%，0050 重疊 6.2%、最大回撤 -11.05%。",
+        "radar_action_note": "年化波動度 20.97%，留意集中度與回撤風險。"
       }
     },
     {
@@ -660,30 +1117,48 @@
       "name": "【好好退休】永豐永豐證券投資信託基金R類型",
       "issuer": "永豐投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 37.3,
+      "tsmc_pct": 7.0,
+      "overlap_0050_pct": 9.1,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -18.62,
+        "annual_volatility_pct": 25.5,
+        "sharpe_ratio": 1.3
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -1.5
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.3
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 7.0
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 37.3%、台積電 7.0%，0050 重疊 9.1%、最大回撤 -18.62%。",
+        "radar_action_note": "年化波動度 25.5%，留意集中度與回撤風險。"
       }
     },
     {
@@ -691,30 +1166,48 @@
       "name": "【TISA級別】台中銀大發基金TISA(累積型-新台幣)",
       "issuer": "TISA合作投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 41.3,
+      "tsmc_pct": 7.1,
+      "overlap_0050_pct": 10.4,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -22.76,
+        "annual_volatility_pct": 23.56,
+        "sharpe_ratio": 0.6
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.1
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 7.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 41.3%、台積電 7.1%，0050 重疊 10.4%、最大回撤 -22.76%。",
+        "radar_action_note": "年化波動度 23.56%，留意集中度與回撤風險。"
       }
     },
     {
@@ -722,30 +1215,44 @@
       "name": "【TISA級別】野村平衡基金-TISA類型",
       "issuer": "野村投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 27.9,
+      "tsmc_pct": 5.1,
+      "overlap_0050_pct": 5.1,
+      "overlap_00878_pct": 2.1,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -17.04,
+        "annual_volatility_pct": 23.36,
+        "sharpe_ratio": 0.96
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.1
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 2.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 27.9%、台積電 5.1%，0050 重疊 5.1%、最大回撤 -17.04%。",
+        "radar_action_note": "年化波動度 23.36%，留意集中度與回撤風險。"
       }
     },
     {
@@ -753,30 +1260,48 @@
       "name": "【TISA級別】群益馬拉松基金-TISA類型",
       "issuer": "群益投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 57.4,
+      "tsmc_pct": 2.4,
+      "overlap_0050_pct": 3.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -23.38,
+        "annual_volatility_pct": 22.62,
+        "sharpe_ratio": 1.49
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.3
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.4
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 57.4%、台積電 2.4%，0050 重疊 3.5%、最大回撤 -23.38%。",
+        "radar_action_note": "年化波動度 22.62%，留意集中度與回撤風險。"
       }
     },
     {
@@ -784,30 +1309,60 @@
       "name": "【TISA級別】元大台灣卓越50ETF連結基金-新台幣TISA類型",
       "issuer": "元大投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 40.9,
+      "tsmc_pct": 13.5,
+      "overlap_0050_pct": 22.8,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.42,
+        "annual_volatility_pct": 24.89,
+        "sharpe_ratio": 1.55
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 2.2
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 2.2
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 13.5
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 4.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.1
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.8
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 40.9%、台積電 13.5%，0050 重疊 22.8%、最大回撤 -12.42%。",
+        "radar_action_note": "年化波動度 24.89%，留意集中度與回撤風險。"
       }
     },
     {
@@ -815,30 +1370,64 @@
       "name": "【TISA級別】元大台灣高股息ETF連結基金-新台幣TISA類型",
       "issuer": "元大投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 31.5,
+      "tsmc_pct": 14.9,
+      "overlap_0050_pct": 24.1,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -14.2,
+        "annual_volatility_pct": 22.12,
+        "sharpe_ratio": 0.49
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -2.1
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -1.4
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.2
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 14.9
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 2.8
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 4.9
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 31.5%、台積電 14.9%，0050 重疊 24.1%、最大回撤 -14.2%。",
+        "radar_action_note": "年化波動度 22.12%，留意集中度與回撤風險。"
       }
     },
     {
@@ -846,30 +1435,60 @@
       "name": "【好好退休】元大台灣加權股價指數基金-新台幣R類型",
       "issuer": "元大投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 25.0,
+      "tsmc_pct": 11.1,
+      "overlap_0050_pct": 18.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -8.86,
+        "annual_volatility_pct": 21.62,
+        "sharpe_ratio": 2.26
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": 2.2
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.7
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 1.1
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 11.1
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 3.2
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.2
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 25.0%、台積電 11.1%，0050 重疊 18.6%、最大回撤 -8.86%。",
+        "radar_action_note": "年化波動度 21.62%，留意集中度與回撤風險。"
       }
     },
     {
@@ -877,30 +1496,60 @@
       "name": "【TISA級別】野村台灣高股息基金-TISA類型",
       "issuer": "野村投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 29.0,
+      "tsmc_pct": 14.6,
+      "overlap_0050_pct": 24.1,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -15.57,
+        "annual_volatility_pct": 23.99,
+        "sharpe_ratio": -0.0
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -2.2
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -1.6
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 14.6
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 4.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.7
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.7
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 29.0%、台積電 14.6%，0050 重疊 24.1%、最大回撤 -15.57%。",
+        "radar_action_note": "年化波動度 23.99%，留意集中度與回撤風險。"
       }
     },
     {
@@ -908,30 +1557,56 @@
       "name": "【好好退休】野村台灣高股息證券投資信託基金（Ｓ級別）",
       "issuer": "野村投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 38.5,
+      "tsmc_pct": 14.2,
+      "overlap_0050_pct": 25.3,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -26.07,
+        "annual_volatility_pct": 22.26,
+        "sharpe_ratio": -1.2
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.9
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": 0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 14.2
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 5.4
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 5.9
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 1.7
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 38.5%、台積電 14.2%，0050 重疊 25.3%、最大回撤 -26.07%。",
+        "radar_action_note": "年化波動度 22.26%，留意集中度與回撤風險。"
       }
     },
     {
@@ -939,30 +1614,48 @@
       "name": "【好好退休】兆豐萬全基金 R類型",
       "issuer": "兆豐投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 21.1,
+      "tsmc_pct": 5.3,
+      "overlap_0050_pct": 7.7,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -15.51,
+        "annual_volatility_pct": 19.8,
+        "sharpe_ratio": 0.16
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.7
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.3
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 21.1%、台積電 5.3%，0050 重疊 7.7%、最大回撤 -15.51%。",
+        "radar_action_note": "年化波動度 19.8%，留意集中度與回撤風險。"
       }
     },
     {
@@ -970,30 +1663,44 @@
       "name": "【好好退休】玉山新世紀證券投資信託基金—R級別",
       "issuer": "玉山投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 41.5,
+      "tsmc_pct": 2.1,
+      "overlap_0050_pct": 3.7,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -20.76,
+        "annual_volatility_pct": 25.01,
+        "sharpe_ratio": -0.32
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 41.5%、台積電 2.1%，0050 重疊 3.7%、最大回撤 -20.76%。",
+        "radar_action_note": "年化波動度 25.01%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1001,30 +1708,39 @@
       "name": "【好好退休】玉山金平衡證券投資信託基金—R級別",
       "issuer": "玉山投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 11.7,
+      "tsmc_pct": 5.4,
+      "overlap_0050_pct": 5.4,
+      "overlap_00878_pct": 1.9,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -21.19,
+        "annual_volatility_pct": 24.61,
+        "sharpe_ratio": 0.73
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
         "top_weight_changes": []
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.4
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 1.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 11.7%、台積電 5.4%，0050 重疊 5.4%、最大回撤 -21.19%。",
+        "radar_action_note": "年化波動度 24.61%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1032,30 +1748,60 @@
       "name": "【好好退休】野村全球高股息證券投資信託基金(S級別)",
       "issuer": "野村投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 25.4,
+      "tsmc_pct": 6.5,
+      "overlap_0050_pct": 14.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -8.73,
+        "annual_volatility_pct": 20.02,
+        "sharpe_ratio": 1.53
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -1.4
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.9
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.5
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 2.3
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.6
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 25.4%、台積電 6.5%，0050 重疊 14.5%、最大回撤 -8.73%。",
+        "radar_action_note": "年化波動度 20.02%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1063,30 +1809,44 @@
       "name": "【好享退-安聯積極型】安聯四季成長組合基金-P類型-新臺幣",
       "issuer": "安聯投信",
       "tisa_type": "好享退",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 51.6,
+      "tsmc_pct": 8.7,
+      "overlap_0050_pct": 10.2,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.09,
+        "annual_volatility_pct": 24.61,
+        "sharpe_ratio": 1.45
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.5
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 51.6%、台積電 8.7%，0050 重疊 10.2%、最大回撤 -12.09%。",
+        "radar_action_note": "年化波動度 24.61%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1094,30 +1854,48 @@
       "name": "【好享退-國泰2049】國泰泰享退系列2049目標日期組合基金P",
       "issuer": "國泰投信",
       "tisa_type": "好享退",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 57.0,
+      "tsmc_pct": 7.6,
+      "overlap_0050_pct": 10.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -17.2,
+        "annual_volatility_pct": 24.69,
+        "sharpe_ratio": 0.31
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -1.0
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 7.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 57.0%、台積電 7.6%，0050 重疊 10.5%、最大回撤 -17.2%。",
+        "radar_action_note": "年化波動度 24.69%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1125,30 +1903,48 @@
       "name": "【好好退休】富蘭克林華美退休傘型證券投資信託基金之目標2037組合證券投資信託基金R類型",
       "issuer": "TISA合作投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 35.2,
+      "tsmc_pct": 5.1,
+      "overlap_0050_pct": 7.1,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -8.55,
+        "annual_volatility_pct": 22.54,
+        "sharpe_ratio": 2.32
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.4
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.2
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.0
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 35.2%、台積電 5.1%，0050 重疊 7.1%、最大回撤 -8.55%。",
+        "radar_action_note": "年化波動度 22.54%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1156,30 +1952,48 @@
       "name": "【TISA級別】國泰泰享退系列2049目標日期組合基金TISA",
       "issuer": "國泰投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 41.9,
+      "tsmc_pct": 6.0,
+      "overlap_0050_pct": 7.2,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -9.18,
+        "annual_volatility_pct": 22.7,
+        "sharpe_ratio": 1.26
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.4
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.0
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 41.9%、台積電 6.0%，0050 重疊 7.2%、最大回撤 -9.18%。",
+        "radar_action_note": "年化波動度 22.7%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1187,30 +2001,48 @@
       "name": "【好好退休】安聯四季成長組合基金-R類型-新臺幣",
       "issuer": "安聯投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 22.2,
+      "tsmc_pct": 4.8,
+      "overlap_0050_pct": 8.1,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -23.8,
+        "annual_volatility_pct": 23.34,
+        "sharpe_ratio": 0.03
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.8
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.8
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 22.2%、台積電 4.8%，0050 重疊 8.1%、最大回撤 -23.8%。",
+        "radar_action_note": "年化波動度 23.34%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1218,30 +2050,39 @@
       "name": "【好好退休】國泰泰享退系列２０４９目標日期組合證券投資信託基金R",
       "issuer": "國泰投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 46.8,
+      "tsmc_pct": 5.0,
+      "overlap_0050_pct": 6.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -21.22,
+        "annual_volatility_pct": 24.63,
+        "sharpe_ratio": -0.11
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
         "top_weight_changes": []
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.0
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 46.8%、台積電 5.0%，0050 重疊 6.6%、最大回撤 -21.22%。",
+        "radar_action_note": "年化波動度 24.63%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1249,30 +2090,44 @@
       "name": "【好好退休】玉山策略成長ETF組合證券投資信託基金－新台幣R級別",
       "issuer": "玉山投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 42.2,
+      "tsmc_pct": 6.9,
+      "overlap_0050_pct": 8.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -13.18,
+        "annual_volatility_pct": 22.82,
+        "sharpe_ratio": 1.38
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.2
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.9
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 42.2%、台積電 6.9%，0050 重疊 8.5%、最大回撤 -13.18%。",
+        "radar_action_note": "年化波動度 22.82%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1280,30 +2135,48 @@
       "name": "【好享退-國泰2039】國泰泰享退系列2039目標日期組合基金P",
       "issuer": "國泰投信",
       "tisa_type": "好享退",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 41.4,
+      "tsmc_pct": 7.3,
+      "overlap_0050_pct": 9.4,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -23.34,
+        "annual_volatility_pct": 22.79,
+        "sharpe_ratio": 0.62
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.3
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 7.3
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 41.4%、台積電 7.3%，0050 重疊 9.4%、最大回撤 -23.34%。",
+        "radar_action_note": "年化波動度 22.79%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1311,30 +2184,44 @@
       "name": "【好好退休】國泰泰享退系列２０３９目標日期組合證券投資信託基金R",
       "issuer": "國泰投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 51.6,
+      "tsmc_pct": 5.0,
+      "overlap_0050_pct": 6.2,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -11.02,
+        "annual_volatility_pct": 24.54,
+        "sharpe_ratio": 1.74
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.0
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 51.6%、台積電 5.0%，0050 重疊 6.2%、最大回撤 -11.02%。",
+        "radar_action_note": "年化波動度 24.54%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1342,30 +2229,48 @@
       "name": "【TISA級別】安聯四季成長組合基金-TISA類型-新臺幣",
       "issuer": "安聯投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 30.5,
+      "tsmc_pct": 6.7,
+      "overlap_0050_pct": 9.3,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -21.18,
+        "annual_volatility_pct": 23.82,
+        "sharpe_ratio": 0.93
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.2
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 30.5%、台積電 6.7%，0050 重疊 9.3%、最大回撤 -21.18%。",
+        "radar_action_note": "年化波動度 23.82%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1373,30 +2278,48 @@
       "name": "【好享退-群益積極型】群益全民成長樂退組合基金P(累積型-新台幣)",
       "issuer": "群益投信",
       "tisa_type": "好享退",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 44.0,
+      "tsmc_pct": 6.6,
+      "overlap_0050_pct": 8.0,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -11.29,
+        "annual_volatility_pct": 24.73,
+        "sharpe_ratio": 2.64
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.0
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 44.0%、台積電 6.6%，0050 重疊 8.0%、最大回撤 -11.29%。",
+        "radar_action_note": "年化波動度 24.73%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1404,30 +2327,48 @@
       "name": "【好好退休】群益全民成長樂退組合基金R(累積型-新台幣)",
       "issuer": "群益投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 55.3,
+      "tsmc_pct": 7.4,
+      "overlap_0050_pct": 9.7,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -21.84,
+        "annual_volatility_pct": 24.82,
+        "sharpe_ratio": 1.99
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.5
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 7.4
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 55.3%、台積電 7.4%，0050 重疊 9.7%、最大回撤 -21.84%。",
+        "radar_action_note": "年化波動度 24.82%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1435,30 +2376,48 @@
       "name": "【好好退休】國泰全球積極組合證券投資信託基金R",
       "issuer": "國泰投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 45.6,
+      "tsmc_pct": 6.4,
+      "overlap_0050_pct": 7.4,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -9.95,
+        "annual_volatility_pct": 23.93,
+        "sharpe_ratio": 2.46
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.3
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.4
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.0
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 45.6%、台積電 6.4%，0050 重疊 7.4%、最大回撤 -9.95%。",
+        "radar_action_note": "年化波動度 23.93%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1466,30 +2425,44 @@
       "name": "【好好退休】摩根環球股票收益證券投資信託基金-R類型(新臺幣)",
       "issuer": "摩根投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 8.7,
+      "tsmc_pct": 4.2,
+      "overlap_0050_pct": 4.2,
+      "overlap_00878_pct": 3.4,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -46.0,
+        "annual_volatility_pct": 17.71,
+        "sharpe_ratio": -4.62
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": 0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.2
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 8.7%、台積電 4.2%，0050 重疊 4.2%、最大回撤 -46.0%。",
+        "radar_action_note": "年化波動度 17.71%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1497,30 +2470,44 @@
       "name": "【好享退-安聯穩健型】安聯四季雙收入息組合基金-P類型(累積)-新臺幣",
       "issuer": "安聯投信",
       "tisa_type": "好享退",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 14.3,
+      "tsmc_pct": 3.7,
+      "overlap_0050_pct": 3.7,
+      "overlap_00878_pct": 3.1,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -11.5,
+        "annual_volatility_pct": 22.2,
+        "sharpe_ratio": 0.98
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.7
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 14.3%、台積電 3.7%，0050 重疊 3.7%、最大回撤 -11.5%。",
+        "radar_action_note": "年化波動度 22.2%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1528,30 +2515,44 @@
       "name": "【TISA級別】凱基未來世代關鍵收息多重資產基金－新臺幣TISA（累積）",
       "issuer": "凱基投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 20.4,
+      "tsmc_pct": 1.9,
+      "overlap_0050_pct": 1.9,
+      "overlap_00878_pct": 3.4,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -15.86,
+        "annual_volatility_pct": 23.18,
+        "sharpe_ratio": 1.37
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 1.9
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 20.4%、台積電 1.9%，0050 重疊 1.9%、最大回撤 -15.86%。",
+        "radar_action_note": "年化波動度 23.18%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1559,30 +2560,48 @@
       "name": "【好享退-國泰2029】國泰泰享退系列2029目標日期組合基金P",
       "issuer": "國泰投信",
       "tisa_type": "好享退",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 51.7,
+      "tsmc_pct": 6.2,
+      "overlap_0050_pct": 8.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.37,
+        "annual_volatility_pct": 19.79,
+        "sharpe_ratio": 1.44
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.2
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.2
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 51.7%、台積電 6.2%，0050 重疊 8.6%、最大回撤 -12.37%。",
+        "radar_action_note": "年化波動度 19.79%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1590,30 +2609,44 @@
       "name": "【TISA級別】富蘭克林華美多重資產收益證券投資信託基金-新臺幣-TISA類型",
       "issuer": "TISA合作投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 21.7,
+      "tsmc_pct": 6.0,
+      "overlap_0050_pct": 6.0,
+      "overlap_00878_pct": 2.6,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.49,
+        "annual_volatility_pct": 20.92,
+        "sharpe_ratio": 0.23
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.0
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 2.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 21.7%、台積電 6.0%，0050 重疊 6.0%、最大回撤 -12.49%。",
+        "radar_action_note": "年化波動度 20.92%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1621,30 +2654,44 @@
       "name": "【好好退休】安聯全球股票多元投資風格證券投資信託基金-R類型-新臺幣",
       "issuer": "安聯投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 42.9,
+      "tsmc_pct": 2.2,
+      "overlap_0050_pct": 3.9,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -11.01,
+        "annual_volatility_pct": 20.45,
+        "sharpe_ratio": 1.6
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.2
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.7
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 42.9%、台積電 2.2%，0050 重疊 3.9%、最大回撤 -11.01%。",
+        "radar_action_note": "年化波動度 20.45%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1652,30 +2699,48 @@
       "name": "【TISA級別】群益全民成長樂退組合基金TISA(累積型-新台幣)",
       "issuer": "群益投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 31.5,
+      "tsmc_pct": 3.7,
+      "overlap_0050_pct": 5.0,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -22.49,
+        "annual_volatility_pct": 22.28,
+        "sharpe_ratio": -0.49
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.8
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 31.5%、台積電 3.7%，0050 重疊 5.0%、最大回撤 -22.49%。",
+        "radar_action_note": "年化波動度 22.28%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1683,30 +2748,48 @@
       "name": "【好好退休】國泰泰享退系列２０２９目標日期組合證券投資信託基金R",
       "issuer": "國泰投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 38.5,
+      "tsmc_pct": 6.7,
+      "overlap_0050_pct": 9.1,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -16.04,
+        "annual_volatility_pct": 21.84,
+        "sharpe_ratio": 0.13
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.2
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 38.5%、台積電 6.7%，0050 重疊 9.1%、最大回撤 -16.04%。",
+        "radar_action_note": "年化波動度 21.84%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1714,30 +2797,48 @@
       "name": "【好好退休】安聯四季雙收入息組合基金-R類型(累積)-新臺幣",
       "issuer": "安聯投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 40.4,
+      "tsmc_pct": 7.6,
+      "overlap_0050_pct": 9.4,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -24.14,
+        "annual_volatility_pct": 19.7,
+        "sharpe_ratio": -1.38
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.9
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 7.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.8
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 40.4%、台積電 7.6%，0050 重疊 9.4%、最大回撤 -24.14%。",
+        "radar_action_note": "年化波動度 19.7%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1745,30 +2846,44 @@
       "name": "【好好退休】富蘭克林華美退休傘型證券投資信託基金之目標2027組合證券投資信託基金R類型",
       "issuer": "TISA合作投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 37.1,
+      "tsmc_pct": 8.7,
+      "overlap_0050_pct": 11.7,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -27.36,
+        "annual_volatility_pct": 18.57,
+        "sharpe_ratio": -1.5
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.0
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 37.1%、台積電 8.7%，0050 重疊 11.7%、最大回撤 -27.36%。",
+        "radar_action_note": "年化波動度 18.57%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1776,30 +2891,48 @@
       "name": "【好好退休】貝萊德享退休系列2050目標日期組合基金-R類型",
       "issuer": "貝萊德投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 56.5,
+      "tsmc_pct": 3.9,
+      "overlap_0050_pct": 6.8,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -25.88,
+        "annual_volatility_pct": 20.97,
+        "sharpe_ratio": -1.02
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.8
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.9
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 56.5%、台積電 3.9%，0050 重疊 6.8%、最大回撤 -25.88%。",
+        "radar_action_note": "年化波動度 20.97%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1807,30 +2940,48 @@
       "name": "【好好退休】路博邁收益成長多重資產證券投資信託基金R累積(新臺幣)",
       "issuer": "路博邁投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 16.4,
+      "tsmc_pct": 1.6,
+      "overlap_0050_pct": 1.6,
+      "overlap_00878_pct": 1.9,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.48,
+        "annual_volatility_pct": 20.91,
+        "sharpe_ratio": 1.62
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": 0.5
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 1.6
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 1.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 16.4%、台積電 1.6%，0050 重疊 1.6%、最大回撤 -12.48%。",
+        "radar_action_note": "年化波動度 20.91%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1838,30 +2989,48 @@
       "name": "【好享退-群益穩健型】群益全民優質樂退組合基金P(累積型-新台幣)",
       "issuer": "群益投信",
       "tisa_type": "好享退",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 15.1,
+      "tsmc_pct": 2.9,
+      "overlap_0050_pct": 2.9,
+      "overlap_00878_pct": 3.5,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -9.37,
+        "annual_volatility_pct": 18.24,
+        "sharpe_ratio": 0.37
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": -0.7
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.9
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.5
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 15.1%、台積電 2.9%，0050 重疊 2.9%、最大回撤 -9.37%。",
+        "radar_action_note": "年化波動度 18.24%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1869,30 +3038,44 @@
       "name": "【好好退休】群益全民優質樂退組合基金R(累積型-新台幣)",
       "issuer": "群益投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 41.6,
+      "tsmc_pct": 5.1,
+      "overlap_0050_pct": 6.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -9.3,
+        "annual_volatility_pct": 18.37,
+        "sharpe_ratio": 1.94
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 41.6%、台積電 5.1%，0050 重疊 6.5%、最大回撤 -9.3%。",
+        "radar_action_note": "年化波動度 18.37%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1900,30 +3083,44 @@
       "name": "【好好退休】野村多元收益多重資產證券投資信託基金（Ｓ級別）",
       "issuer": "野村投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 9.6,
+      "tsmc_pct": 5.6,
+      "overlap_0050_pct": 5.6,
+      "overlap_00878_pct": 3.2,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -22.79,
+        "annual_volatility_pct": 19.73,
+        "sharpe_ratio": -1.2
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.6
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 9.6%、台積電 5.6%，0050 重疊 5.6%、最大回撤 -22.79%。",
+        "radar_action_note": "年化波動度 19.73%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1931,30 +3128,44 @@
       "name": "【好好退休】元大全球ETF穩健組合證券投資信託基金-新台幣R類型",
       "issuer": "元大投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 18.4,
+      "tsmc_pct": 4.7,
+      "overlap_0050_pct": 4.7,
+      "overlap_00878_pct": 2.2,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -9.26,
+        "annual_volatility_pct": 20.5,
+        "sharpe_ratio": 2.18
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.7
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 2.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 18.4%、台積電 4.7%，0050 重疊 4.7%、最大回撤 -9.26%。",
+        "radar_action_note": "年化波動度 20.5%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1962,30 +3173,39 @@
       "name": "【好好退休】野村動態配置多重資產證券投資信託基金(S級別)",
       "issuer": "野村投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 11.4,
+      "tsmc_pct": 3.0,
+      "overlap_0050_pct": 3.0,
+      "overlap_00878_pct": 3.2,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -10.24,
+        "annual_volatility_pct": 20.19,
+        "sharpe_ratio": 1.5
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
         "top_weight_changes": []
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.0
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 11.4%、台積電 3.0%，0050 重疊 3.0%、最大回撤 -10.24%。",
+        "radar_action_note": "年化波動度 20.19%，留意集中度與回撤風險。"
       }
     },
     {
@@ -1993,30 +3213,44 @@
       "name": "【好好退休】國泰全球多重收益平衡基金R",
       "issuer": "國泰投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 12.7,
+      "tsmc_pct": 4.0,
+      "overlap_0050_pct": 4.0,
+      "overlap_00878_pct": 2.7,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -19.31,
+        "annual_volatility_pct": 19.0,
+        "sharpe_ratio": -0.26
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.0
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 2.7
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 12.7%、台積電 4.0%，0050 重疊 4.0%、最大回撤 -19.31%。",
+        "radar_action_note": "年化波動度 19.0%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2024,30 +3258,48 @@
       "name": "【TISA級別】野村多元收益多重資產基金-TISA類型",
       "issuer": "野村投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 15.8,
+      "tsmc_pct": 2.2,
+      "overlap_0050_pct": 2.2,
+      "overlap_00878_pct": 3.1,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -26.3,
+        "annual_volatility_pct": 21.34,
+        "sharpe_ratio": -0.98
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.9
+          },
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.2
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 15.8%、台積電 2.2%，0050 重疊 2.2%、最大回撤 -26.3%。",
+        "radar_action_note": "年化波動度 21.34%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2055,30 +3307,64 @@
       "name": "【TISA級別】中國信託科技趨勢多重資產證券投資信託基金-新台幣TISA",
       "issuer": "TISA合作投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 53.6,
+      "tsmc_pct": 33.6,
+      "overlap_0050_pct": 44.2,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.86,
+        "annual_volatility_pct": 20.78,
+        "sharpe_ratio": 2.01
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -1.8
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -1.8
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.2
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.1
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 33.6
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 4.2
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 4.7
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 53.6%、台積電 33.6%，0050 重疊 44.2%、最大回撤 -12.86%。",
+        "radar_action_note": "年化波動度 20.78%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2086,30 +3372,44 @@
       "name": "【好享退-群益保守型】群益全民安穩樂退組合基金P(累積型-新台幣)",
       "issuer": "群益投信",
       "tisa_type": "好享退",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR2",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 10.0,
+      "tsmc_pct": 4.8,
+      "overlap_0050_pct": 4.8,
+      "overlap_00878_pct": 1.9,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -8.92,
+        "annual_volatility_pct": 15.29,
+        "sharpe_ratio": 1.6
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": -0.9
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.8
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 1.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR2），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 10.0%、台積電 4.8%，0050 重疊 4.8%、最大回撤 -8.92%。",
+        "radar_action_note": "年化波動度 15.29%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2117,30 +3417,44 @@
       "name": "【好好退休】群益全民安穩樂退組合基金R(累積型-新台幣)",
       "issuer": "群益投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR2",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 49.0,
+      "tsmc_pct": 6.5,
+      "overlap_0050_pct": 9.9,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -10.53,
+        "annual_volatility_pct": 16.19,
+        "sharpe_ratio": 0.83
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.5
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR2），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 49.0%、台積電 6.5%，0050 重疊 9.9%、最大回撤 -10.53%。",
+        "radar_action_note": "年化波動度 16.19%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2148,30 +3462,39 @@
       "name": "【好好退休】國泰豐益債券組合證券投資信託基金R",
       "issuer": "國泰投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 18.6,
+      "tsmc_pct": 4.3,
+      "overlap_0050_pct": 4.3,
+      "overlap_00878_pct": 2.2,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -21.35,
+        "annual_volatility_pct": 23.26,
+        "sharpe_ratio": -0.0
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
         "top_weight_changes": []
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.3
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 2.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 18.6%、台積電 4.3%，0050 重疊 4.3%、最大回撤 -21.35%。",
+        "radar_action_note": "年化波動度 23.26%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2179,30 +3502,44 @@
       "name": "【好好退休】台新全球債券基金(R類型)新台幣",
       "issuer": "台新投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR2",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 23.5,
+      "tsmc_pct": 3.5,
+      "overlap_0050_pct": 3.5,
+      "overlap_00878_pct": 3.4,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -10.88,
+        "annual_volatility_pct": 16.31,
+        "sharpe_ratio": 1.13
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": 0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.5
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR2），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 23.5%、台積電 3.5%，0050 重疊 3.5%、最大回撤 -10.88%。",
+        "radar_action_note": "年化波動度 16.31%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2210,30 +3547,48 @@
       "name": "【好享退-安聯保守型】安聯四季回報債券組合基金-P類型(累積)-新臺幣",
       "issuer": "安聯投信",
       "tisa_type": "好享退",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 8.1,
+      "tsmc_pct": 5.9,
+      "overlap_0050_pct": 5.9,
+      "overlap_00878_pct": 1.8,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -14.0,
+        "annual_volatility_pct": 20.82,
+        "sharpe_ratio": 0.34
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": 0.8
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.9
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 1.8
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 8.1%、台積電 5.9%，0050 重疊 5.9%、最大回撤 -14.0%。",
+        "radar_action_note": "年化波動度 20.82%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2241,30 +3596,44 @@
       "name": "【好好退休】安聯四季回報債券組合基金-R類型(累積)-新臺幣",
       "issuer": "安聯投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 9.7,
+      "tsmc_pct": 2.7,
+      "overlap_0050_pct": 2.7,
+      "overlap_00878_pct": 3.1,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -13.59,
+        "annual_volatility_pct": 20.97,
+        "sharpe_ratio": 0.52
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": -0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.7
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 9.7%、台積電 2.7%，0050 重疊 2.7%、最大回撤 -13.59%。",
+        "radar_action_note": "年化波動度 20.97%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2272,30 +3641,48 @@
       "name": "【好好退休】富邦全球投資等級債券證券投資信託基金-R類型（新臺幣）",
       "issuer": "富邦投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR2",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 21.4,
+      "tsmc_pct": 4.4,
+      "overlap_0050_pct": 4.4,
+      "overlap_00878_pct": 2.5,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -8.28,
+        "annual_volatility_pct": 18.22,
+        "sharpe_ratio": 2.23
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": 0.8
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.4
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 2.5
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR2），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 21.4%、台積電 4.4%，0050 重疊 4.4%、最大回撤 -8.28%。",
+        "radar_action_note": "年化波動度 18.22%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2303,30 +3690,44 @@
       "name": "【好好退休】富蘭克林華美坦伯頓全球股票組合證券投資信託基金R類型",
       "issuer": "TISA合作投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 40.1,
+      "tsmc_pct": 5.1,
+      "overlap_0050_pct": 7.2,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.78,
+        "annual_volatility_pct": 25.02,
+        "sharpe_ratio": 1.85
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 40.1%、台積電 5.1%，0050 重疊 7.2%、最大回撤 -12.78%。",
+        "radar_action_note": "年化波動度 25.02%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2334,30 +3735,44 @@
       "name": "【TISA級別】華南永昌多重資產入息平衡基金TISA",
       "issuer": "華南永昌投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 24.3,
+      "tsmc_pct": 5.6,
+      "overlap_0050_pct": 5.6,
+      "overlap_00878_pct": 3.7,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -13.01,
+        "annual_volatility_pct": 24.87,
+        "sharpe_ratio": 1.24
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": 0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.6
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.7
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 24.3%、台積電 5.6%，0050 重疊 5.6%、最大回撤 -13.01%。",
+        "radar_action_note": "年化波動度 24.87%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2365,30 +3780,44 @@
       "name": "【好好退休】富蘭克林華美退休傘型證券投資信託基金之目標2047組合證券投資信託基金R類型",
       "issuer": "TISA合作投信",
       "tisa_type": "好好退休",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 26.7,
+      "tsmc_pct": 3.1,
+      "overlap_0050_pct": 6.0,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -10.95,
+        "annual_volatility_pct": 22.31,
+        "sharpe_ratio": 1.6
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.1
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 26.7%、台積電 3.1%，0050 重疊 6.0%、最大回撤 -10.95%。",
+        "radar_action_note": "年化波動度 22.31%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2396,30 +3825,48 @@
       "name": "【TISA級別】第一金小型精選基金-TISA類型",
       "issuer": "第一金投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR5",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 39.3,
+      "tsmc_pct": 8.1,
+      "overlap_0050_pct": 9.8,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -14.36,
+        "annual_volatility_pct": 26.64,
+        "sharpe_ratio": 0.77
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.1
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.7
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR5），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 39.3%、台積電 8.1%，0050 重疊 9.8%、最大回撤 -14.36%。",
+        "radar_action_note": "年化波動度 26.64%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2427,30 +3874,56 @@
       "name": "【TISA級別】富達台灣成長基金TISA股累積型新臺幣計價級別",
       "issuer": "富達投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 33.8,
+      "tsmc_pct": 13.2,
+      "overlap_0050_pct": 20.7,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -24.64,
+        "annual_volatility_pct": 22.17,
+        "sharpe_ratio": -1.41
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -1.1
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 13.2
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 3.3
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.1
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.8
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 33.8%、台積電 13.2%，0050 重疊 20.7%、最大回撤 -24.64%。",
+        "radar_action_note": "年化波動度 22.17%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2458,30 +3931,44 @@
       "name": "【TISA級別】聯博大利基金-TISA類型(新台幣)",
       "issuer": "聯博投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 29.5,
+      "tsmc_pct": 7.4,
+      "overlap_0050_pct": 9.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -10.83,
+        "annual_volatility_pct": 23.91,
+        "sharpe_ratio": 1.66
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 7.4
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 29.5%、台積電 7.4%，0050 重疊 9.6%、最大回撤 -10.83%。",
+        "radar_action_note": "年化波動度 23.91%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2489,30 +3976,48 @@
       "name": "【TISA級別】第一金全球大趨勢證券投資信託基金-新臺幣-TISA類型",
       "issuer": "第一金投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 50.9,
+      "tsmc_pct": 8.6,
+      "overlap_0050_pct": 10.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -22.47,
+        "annual_volatility_pct": 19.19,
+        "sharpe_ratio": -0.4
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.8
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.0
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 50.9%、台積電 8.6%，0050 重疊 10.6%、最大回撤 -22.47%。",
+        "radar_action_note": "年化波動度 19.19%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2520,30 +4025,48 @@
       "name": "【TISA級別】第一金美國100大企業債券證券投資信託基金-新臺幣-TISA類型",
       "issuer": "第一金投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "債券/收益型",
       "risk_level": "RR2",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 13.4,
+      "tsmc_pct": 5.1,
+      "overlap_0050_pct": 5.1,
+      "overlap_00878_pct": 1.6,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -11.99,
+        "annual_volatility_pct": 17.18,
+        "sharpe_ratio": -0.68
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": -0.7
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.1
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 1.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR2），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 13.4%、台積電 5.1%，0050 重疊 5.1%、最大回撤 -11.99%。",
+        "radar_action_note": "年化波動度 17.18%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2551,30 +4074,48 @@
       "name": "【TISA級別】瀚亞外銷基金TISA類型-新台幣",
       "issuer": "瀚亞投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 43.6,
+      "tsmc_pct": 6.1,
+      "overlap_0050_pct": 8.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -13.29,
+        "annual_volatility_pct": 24.98,
+        "sharpe_ratio": 0.35
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.4
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.3
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 43.6%、台積電 6.1%，0050 重疊 8.5%、最大回撤 -13.29%。",
+        "radar_action_note": "年化波動度 24.98%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2582,30 +4123,60 @@
       "name": "【TISA級別】匯豐台灣精典基金-台幣不配息TISA",
       "issuer": "匯豐投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 34.5,
+      "tsmc_pct": 6.0,
+      "overlap_0050_pct": 17.1,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -6.75,
+        "annual_volatility_pct": 22.29,
+        "sharpe_ratio": 3.73
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.8
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -1.5
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.0
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 4.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 5.0
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 34.5%、台積電 6.0%，0050 重疊 17.1%、最大回撤 -6.75%。",
+        "radar_action_note": "年化波動度 22.29%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2613,30 +4184,48 @@
       "name": "【TISA級別】柏瑞巨人基金-TISA類型(新臺幣)",
       "issuer": "柏瑞投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 26.6,
+      "tsmc_pct": 5.4,
+      "overlap_0050_pct": 8.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -23.78,
+        "annual_volatility_pct": 23.24,
+        "sharpe_ratio": -0.09
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.4
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.4
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 26.6%、台積電 5.4%，0050 重疊 8.6%、最大回撤 -23.78%。",
+        "radar_action_note": "年化波動度 23.24%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2644,30 +4233,44 @@
       "name": "【TISA級別】柏瑞ESG量化多重資產基金-TISA類型(新臺幣)",
       "issuer": "柏瑞投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 15.5,
+      "tsmc_pct": 3.8,
+      "overlap_0050_pct": 3.8,
+      "overlap_00878_pct": 3.4,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -11.39,
+        "annual_volatility_pct": 20.67,
+        "sharpe_ratio": 1.0
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.8
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 15.5%、台積電 3.8%，0050 重疊 3.8%、最大回撤 -11.39%。",
+        "radar_action_note": "年化波動度 20.67%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2675,30 +4278,48 @@
       "name": "【TISA級別】富邦上選證券投資信託基金-TISA類型",
       "issuer": "富邦投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 33.2,
+      "tsmc_pct": 4.8,
+      "overlap_0050_pct": 6.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -19.02,
+        "annual_volatility_pct": 21.6,
+        "sharpe_ratio": -0.21
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.3
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.8
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.8
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 33.2%、台積電 4.8%，0050 重疊 6.6%、最大回撤 -19.02%。",
+        "radar_action_note": "年化波動度 21.6%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2706,30 +4327,39 @@
       "name": "【TISA級別】富邦AI智能新趨勢多重資產型證券投資信託基金-TISA類型（新臺幣）",
       "issuer": "富邦投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 25.5,
+      "tsmc_pct": 3.8,
+      "overlap_0050_pct": 3.8,
+      "overlap_00878_pct": 1.8,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.67,
+        "annual_volatility_pct": 23.58,
+        "sharpe_ratio": 0.35
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
         "top_weight_changes": []
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.8
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 1.8
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 25.5%、台積電 3.8%，0050 重疊 3.8%、最大回撤 -12.67%。",
+        "radar_action_note": "年化波動度 23.58%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2737,30 +4367,44 @@
       "name": "【TISA級別】富邦新台商證券投資信託基金-TISA類型",
       "issuer": "富邦投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 54.4,
+      "tsmc_pct": 8.3,
+      "overlap_0050_pct": 10.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -28.56,
+        "annual_volatility_pct": 24.38,
+        "sharpe_ratio": -0.76
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.3
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.3
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 54.4%、台積電 8.3%，0050 重疊 10.6%、最大回撤 -28.56%。",
+        "radar_action_note": "年化波動度 24.38%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2768,30 +4412,60 @@
       "name": "【TISA級別】富邦台灣永續成長股息證券投資信託基金-TISA類型",
       "issuer": "富邦投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 35.5,
+      "tsmc_pct": 20.7,
+      "overlap_0050_pct": 29.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -27.18,
+        "annual_volatility_pct": 24.11,
+        "sharpe_ratio": -0.79
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 1.4
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -1.2
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.0
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 20.7
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 2.8
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 4.1
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 1.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 35.5%、台積電 20.7%，0050 重疊 29.5%、最大回撤 -27.18%。",
+        "radar_action_note": "年化波動度 24.11%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2799,30 +4473,60 @@
       "name": "【TISA級別】富邦台灣高股息證券投資信託基金-TISA類型",
       "issuer": "富邦投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 36.0,
+      "tsmc_pct": 6.2,
+      "overlap_0050_pct": 16.7,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -8.98,
+        "annual_volatility_pct": 21.08,
+        "sharpe_ratio": 2.02
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.6
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.6
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 6.2
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 4.1
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 4.9
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 36.0%、台積電 6.2%，0050 重疊 16.7%、最大回撤 -8.98%。",
+        "radar_action_note": "年化波動度 21.08%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2830,30 +4534,64 @@
       "name": "【TISA級別】兆豐豐台灣證券投資信託基金-TISA",
       "issuer": "兆豐投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 36.6,
+      "tsmc_pct": 14.8,
+      "overlap_0050_pct": 24.3,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -10.94,
+        "annual_volatility_pct": 22.97,
+        "sharpe_ratio": 3.47
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": 1.7
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 1.5
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.9
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 14.8
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 5.5
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.4
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.0
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 36.6%、台積電 14.8%，0050 重疊 24.3%、最大回撤 -10.94%。",
+        "radar_action_note": "年化波動度 22.97%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2861,30 +4599,60 @@
       "name": "【TISA級別】台新台灣中小基金-TISA類型",
       "issuer": "台新投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR5",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 40.8,
+      "tsmc_pct": 16.9,
+      "overlap_0050_pct": 27.1,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -10.75,
+        "annual_volatility_pct": 28.56,
+        "sharpe_ratio": 2.14
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 1.5
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": 1.1
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -0.8
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 16.9
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 4.2
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 4.1
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 1.9
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR5），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 40.8%、台積電 16.9%，0050 重疊 27.1%、最大回撤 -10.75%。",
+        "radar_action_note": "年化波動度 28.56%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2892,30 +4660,60 @@
       "name": "【TISA級別】台新高股息平衡基金-TISA類型",
       "issuer": "台新投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股高息/價值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 36.4,
+      "tsmc_pct": 10.6,
+      "overlap_0050_pct": 21.6,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -18.75,
+        "annual_volatility_pct": 23.52,
+        "sharpe_ratio": 0.04
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 2.2
+          },
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -1.1
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 10.6
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 4.6
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 4.9
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 3.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 36.4%、台積電 10.6%，0050 重疊 21.6%、最大回撤 -18.75%。",
+        "radar_action_note": "年化波動度 23.52%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2923,30 +4721,44 @@
       "name": "【TISA級別】台新主流基金-TISA類型",
       "issuer": "台新投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 56.4,
+      "tsmc_pct": 3.3,
+      "overlap_0050_pct": 4.8,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -19.47,
+        "annual_volatility_pct": 22.58,
+        "sharpe_ratio": -0.25
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 3.3
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.5
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 56.4%、台積電 3.3%，0050 重疊 4.8%、最大回撤 -19.47%。",
+        "radar_action_note": "年化波動度 22.58%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2954,30 +4766,44 @@
       "name": "【TISA級別】台新中國通基金-TISA類型",
       "issuer": "台新投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR5",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 23.8,
+      "tsmc_pct": 8.7,
+      "overlap_0050_pct": 11.3,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -21.58,
+        "annual_volatility_pct": 27.57,
+        "sharpe_ratio": 0.2
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.7
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.7
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR5），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 23.8%、台積電 8.7%，0050 重疊 11.3%、最大回撤 -21.58%。",
+        "radar_action_note": "年化波動度 27.57%，留意集中度與回撤風險。"
       }
     },
     {
@@ -2985,30 +4811,64 @@
       "name": "【TISA級別】台新台灣富貴基金-TISA類型",
       "issuer": "台新投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 34.3,
+      "tsmc_pct": 13.2,
+      "overlap_0050_pct": 21.3,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -15.3,
+        "annual_volatility_pct": 21.97,
+        "sharpe_ratio": 1.68
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": 1.8
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 1.5
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -1.5
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 1.3
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 13.2
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 2.3
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.7
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.6
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 34.3%、台積電 13.2%，0050 重疊 21.3%、最大回撤 -15.3%。",
+        "radar_action_note": "年化波動度 21.97%，留意集中度與回撤風險。"
       }
     },
     {
@@ -3016,30 +4876,48 @@
       "name": "【TISA級別】台新大三通基金-TISA類型",
       "issuer": "台新投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 54.6,
+      "tsmc_pct": 9.0,
+      "overlap_0050_pct": 10.8,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -12.38,
+        "annual_volatility_pct": 22.45,
+        "sharpe_ratio": 1.56
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.5
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 9.0
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 1.8
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 54.6%、台積電 9.0%，0050 重疊 10.8%、最大回撤 -12.38%。",
+        "radar_action_note": "年化波動度 22.45%，留意集中度與回撤風險。"
       }
     },
     {
@@ -3047,30 +4925,48 @@
       "name": "【TISA級別】施羅德全週期成長多重資產基金(新台幣) - TISA類型",
       "issuer": "施羅德投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 16.6,
+      "tsmc_pct": 4.6,
+      "overlap_0050_pct": 4.6,
+      "overlap_00878_pct": 3.0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -6.14,
+        "annual_volatility_pct": 18.26,
+        "sharpe_ratio": 2.42
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": -1.0
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 4.6
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.0
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 16.6%、台積電 4.6%，0050 重疊 4.6%、最大回撤 -6.14%。",
+        "radar_action_note": "年化波動度 18.26%，留意集中度與回撤風險。"
       }
     },
     {
@@ -3078,30 +4974,60 @@
       "name": "【TISA級別】第一金台灣核心戰略建設基金-TISA類型",
       "issuer": "第一金投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "台股一般/市值",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 31.1,
+      "tsmc_pct": 10.3,
+      "overlap_0050_pct": 20.5,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -14.41,
+        "annual_volatility_pct": 23.09,
+        "sharpe_ratio": 0.66
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2317 鴻海",
+            "diff_pct": -1.9
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": -0.7
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 10.3
+        },
+        {
+          "name": "2317 鴻海",
+          "weight": 5.3
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 3.0
+        },
+        {
+          "name": "2308 台達電",
+          "weight": 2.4
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 31.1%、台積電 10.3%，0050 重疊 20.5%、最大回撤 -14.41%。",
+        "radar_action_note": "年化波動度 23.09%，留意集中度與回撤風險。"
       }
     },
     {
@@ -3109,30 +5035,48 @@
       "name": "【TISA級別】第一金中概平衡基金-TISA類型",
       "issuer": "第一金投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR3",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 26.8,
+      "tsmc_pct": 2.9,
+      "overlap_0050_pct": 2.9,
+      "overlap_00878_pct": 3.1,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -16.21,
+        "annual_volatility_pct": 19.46,
+        "sharpe_ratio": 0.63
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": 0.9
+          },
+          {
+            "stock": "2881 富邦金",
+            "diff_pct": 0.5
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 2.9
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 3.1
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR3），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 26.8%、台積電 2.9%，0050 重疊 2.9%、最大回撤 -16.21%。",
+        "radar_action_note": "年化波動度 19.46%，留意集中度與回撤風險。"
       }
     },
     {
@@ -3140,30 +5084,39 @@
       "name": "【TISA級別】永豐趨勢平衡證券投資信託基金-TISA類型",
       "issuer": "永豐投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "平衡/多重資產",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 11.1,
+      "tsmc_pct": 5.0,
+      "overlap_0050_pct": 5.0,
+      "overlap_00878_pct": 2.2,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -14.96,
+        "annual_volatility_pct": 23.3,
+        "sharpe_ratio": 1.98
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
         "top_weight_changes": []
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 5.0
+        },
+        {
+          "name": "2881 富邦金",
+          "weight": 2.2
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 11.1%、台積電 5.0%，0050 重疊 5.0%、最大回撤 -14.96%。",
+        "radar_action_note": "年化波動度 23.3%，留意集中度與回撤風險。"
       }
     },
     {
@@ -3171,30 +5124,48 @@
       "name": "【TISA級別】野村鴻運基金-TISA類型",
       "issuer": "野村投信",
       "tisa_type": "TISA級別",
-      "category": "TISA精選基金",
+      "category": "全球/海外股票",
       "risk_level": "RR4",
       "ter_pct": 0.0,
       "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "tsmc_pct": 0.0,
-      "overlap_0050_pct": 0.0,
-      "overlap_00878_pct": 0.0,
+      "tech_exposure_pct": 42.8,
+      "tsmc_pct": 8.2,
+      "overlap_0050_pct": 11.0,
+      "overlap_00878_pct": 0,
       "risk": {
-        "max_drawdown_pct": 0.0,
-        "annual_volatility_pct": 0.0,
-        "sharpe_ratio": 0.0
+        "max_drawdown_pct": -23.11,
+        "annual_volatility_pct": 20.46,
+        "sharpe_ratio": 0.21
       },
       "holdings_diff": {
         "added": [],
         "removed": [],
-        "top_weight_changes": []
+        "top_weight_changes": [
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -0.7
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": 0.6
+          }
+        ]
       },
-      "top_holdings": [],
+      "top_holdings": [
+        {
+          "name": "2330 台積電",
+          "weight": 8.2
+        },
+        {
+          "name": "2454 聯發科",
+          "weight": 2.8
+        }
+      ],
       "ai_diagnosis": {
         "style_mismatch_flag": false,
-        "mismatch_badge": "已收錄清單",
-        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
-        "radar_action_note": "等待補齊月報前十大持股明細。"
+        "mismatch_badge": "名實相符",
+        "plain_summary": "科技股占比 42.8%、台積電 8.2%，0050 重疊 11.0%、最大回撤 -23.11%。",
+        "radar_action_note": "年化波動度 20.46%，留意集中度與回撤風險。"
       }
     }
   ]
