@@ -1,7 +1,504 @@
 {
-  "updated_at": "2026-11-25 12:14",
+  "updated_at": "2026-11-25 12:18",
   "holdings_as_of": "2026/10/31",
   "source": "基富通 FundRich TISA 專區",
-  "total_count": 0,
-  "funds": []
+  "total_count": 16,
+  "funds": [
+    {
+      "id": "TISA",
+      "name": "【TISA級別】兆豐全球證券投資信託基金-TISA",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "SCH044",
+      "name": "代碼：SCH044",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "YUI116",
+      "name": "代碼：YUI116",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "NOM156",
+      "name": "代碼：NOM156",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "KGI088",
+      "name": "代碼：KGI088",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "SIN064",
+      "name": "代碼：SIN064",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "PGIM",
+      "name": "【好好退休】玉山金滿意證券投資信託基金—R級別(原：PGIM保德信金滿意證券投資信託基金—R級別)",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "FHI062",
+      "name": "代碼：FHI062",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "FSI067",
+      "name": "代碼：FSI067",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "CSI133",
+      "name": "代碼：CSI133",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "FUB059",
+      "name": "代碼：FUB059",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "FTS111",
+      "name": "代碼：FTS111",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "UNI053",
+      "name": "代碼：UNI053",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "UNI052",
+      "name": "代碼：UNI052",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "HSB045",
+      "name": "代碼：HSB045",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "SIN063",
+      "name": "代碼：SIN063",
+      "issuer": "TISA合作投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    }
+  ]
 }
