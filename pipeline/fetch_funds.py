@@ -25,7 +25,7 @@ ISSUER_KEYWORDS = [
     "元大", "國泰", "富邦", "群益", "統一", "野村", "安聯", "摩根", "貝萊德",
     "聯博", "施羅德", "復華", "保德信", "玉山", "台新", "永豐", "兆豐", "第一金",
     "華南永昌", "凱基", "中信", "街口", "瀚亞", "景順", "富達", "鋒裕匯理",
-    "路博邁", "百達", "瑞銀", "柏瑞", "新光", "合庫", "台壽"
+    "路博邁", "百達", "瑞銀", "柏瑞", "新光", "合庫", "台壽", "匯豐"
 ]
 
 
@@ -36,144 +36,162 @@ def load_json_if_exists(path: str, default: dict) -> dict:
     return default
 
 
-def infer_issuer(name: str, context_text: str) -> str:
-    combined = f"{name} {context_text}"
+def infer_issuer(name: str) -> str:
     for kw in ISSUER_KEYWORDS:
-        if kw in combined:
+        if kw in name:
             return f"{kw}投信"
     return "TISA合作投信"
 
 
-def parse_rows_on_current_view(page) -> list[dict]:
-    """從目前畫面上的 fr-fund-table-row 擷取基金代碼、名稱與風險等級"""
-    raw_rows = page.evaluate(
+def infer_tisa_type(name: str) -> str:
+    upper_name = name.upper()
+    if "TISA" in upper_name:
+        return "TISA級別"
+    if "好好退休" in name:
+        return "好好退休"
+    if "好享退" in name:
+        return "好享退"
+    return "TISA專區"
+
+
+def get_table_signature(page) -> str:
+    return page.evaluate(
+        """() => {
+            const rows = Array.from(document.querySelectorAll('fr-fund-table-row'))
+                .filter(r => r.offsetParent !== null);
+            return rows.map(r => (r.innerText || '').trim().replace(/\\s+/g, ' ').slice(0, 50)).join('||');
+        }"""
+    )
+
+
+def parse_visible_pc_rows(page) -> list[dict]:
+    """解析目前可見的 fr-fund-table-row 列，擷取基金代碼、完整名稱與相關資訊"""
+    rows_data = page.evaluate(
         """() => {
             const rows = Array.from(document.querySelectorAll('fr-fund-table-row'));
-            return rows.map((row, idx) => {
-                // 排除收藏/比較 action 欄位，聚焦名稱與其餘資料欄位
-                const titleCol = row.querySelector('.col--title, [class*="title"], [class*="name"]');
-                const titleText = titleCol ? (titleCol.innerText || '').trim() : '';
+            return rows.map(row => {
+                if (row.offsetParent === null) return null;
+                const cols = Array.from(row.querySelectorAll(':scope > div > .col, .col')).map(c =>
+                    (c.innerText || '').trim().replace(/\\s+/g, ' ')
+                );
                 const fullText = (row.innerText || '').trim();
-                const link = row.querySelector('a[href]');
-                const href = link ? (link.getAttribute('href') || '') : '';
-                return {
-                    idx,
-                    titleText,
-                    fullText,
-                    href
-                };
-            });
+                return { cols, fullText };
+            }).filter(Boolean);
         }"""
     )
 
     parsed = []
-    for r in raw_rows:
+    for r in rows_data:
+        cols = r.get("cols", [])
         full_text = r.get("fullText", "")
-        title_text = r.get("titleText", "")
-        href = r.get("href", "")
         if not full_text:
             continue
 
-        lines = [ln.strip() for ln in full_text.splitlines() if ln.strip()]
-        title_lines = [ln.strip() for ln in title_text.splitlines() if ln.strip()]
-
-        # 1. 擷取基金代碼（優先從 href 或文字中的標準代碼格式）
-        href_match = re.search(r"(?:fundCode=|code=|/fund/)([A-Z0-9]{4,10})", href, re.I)
-        code_matches = re.findall(r"\b([A-Z]{2,4}[0-9]{2,4}[A-Z0-9]?)\b", full_text)
         fid = ""
-        if href_match:
-            fid = href_match.group(1).upper()
-        elif code_matches:
-            for c in code_matches:
-                cu = c.upper()
-                if cu not in {"TISA", "RR1", "RR2", "RR3", "RR4", "RR5", "HTML", "HTTP", "HTTPS"}:
-                    fid = cu
+        fname = ""
+        for idx, c in enumerate(cols):
+            c_clean = c.strip()
+            if re.fullmatch(r"[A-Za-z]{2,4}[0-9]{2,4}[A-Za-z0-9]?", c_clean):
+                if c_clean.upper() not in {"TISA", "RR1", "RR2", "RR3", "RR4", "RR5"}:
+                    fid = c_clean.upper()
+                    if idx + 1 < len(cols) and len(cols[idx + 1]) >= 4:
+                        fname = cols[idx + 1].strip()
                     break
+
+        if not fid:
+            m_code = re.search(r"\b([A-Za-z]{2,4}[0-9]{2,4}[A-Za-z0-9]?)\b", full_text)
+            if m_code and m_code.group(1).upper() not in {"TISA", "RR1", "RR2", "RR3", "RR4", "RR5"}:
+                fid = m_code.group(1).upper()
+
         if not fid:
             continue
 
-        # 2. 挑選完整基金名稱（排除「收藏」、「比較」與純代碼行）
-        ignore_exact = {"收藏", "比較", fid, f"代碼：{fid}", f"代碼:{fid}"}
-        candidate_lines = title_lines + lines
-        best_name = ""
-        for ln in candidate_lines:
-            cleaned = re.sub(r"^(代碼[：:]\s*[A-Z0-9]+|基金代號[：:]\s*[A-Z0-9]+)\s*", "", ln).strip()
-            if not cleaned or cleaned in ignore_exact:
-                continue
-            if "基金" in cleaned and len(cleaned) >= 4:
-                best_name = cleaned
-                break
-        if not best_name:
-            for ln in candidate_lines:
-                cleaned = re.sub(r"^(代碼[：:]\s*[A-Z0-9]+|基金代號[：:]\s*[A-Z0-9]+)\s*", "", ln).strip()
-                if cleaned and cleaned not in ignore_exact and len(cleaned) >= 4 and not re.fullmatch(r"[A-Z0-9]{4,8}", cleaned):
-                    best_name = cleaned
-                    break
-        if not best_name:
-            best_name = f"代碼：{fid}"
+        if not fname or "基金" not in fname:
+            lines = [ln.strip() for ln in full_text.splitlines() if ln.strip()]
+            fname = next(
+                (ln for ln in lines if "基金" in ln and len(ln) >= 4),
+                fname or f"代碼：{fid}",
+            )
 
-        rr_match = re.search(r"\b(RR[1-5])\b", full_text)
+        rr_match = re.search(r"\b(RR[1-5])\b", full_text, re.I)
         parsed.append(
             {
                 "id": fid,
-                "name": best_name,
-                "issuer": infer_issuer(best_name, full_text),
-                "risk_level": rr_match.group(1) if rr_match else "RR4",
+                "name": fname,
+                "issuer": infer_issuer(fname),
+                "tisa_type": infer_tisa_type(fname),
+                "risk_level": rr_match.group(1).upper() if rr_match else "RR4",
             }
         )
 
     return parsed
 
 
-def click_next_page_if_available(page) -> bool:
-    """嘗試點擊分頁元件中的下一頁按鈕，成功翻頁回傳 True"""
-    before_signature = page.evaluate(
+def click_next_arrow_or_page(page, next_page_num: int) -> bool:
+    """針對基富通 `/ 6` 分頁列點擊下一頁箭頭（→）或切換頁碼下拉選單"""
+    before_sig = get_table_signature(page)
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    page.wait_for_timeout(600)
+
+    # 1. 優先尋找分頁列中的「下一頁」箭頭按鈕（排除最右邊的「最後一頁」按鈕）
+    clicked = page.evaluate(
         """() => {
-            const rows = Array.from(document.querySelectorAll('fr-fund-table-row'));
-            return rows.map(r => (r.innerText || '').trim().slice(0, 40)).join('|');
+            const buttons = Array.from(document.querySelectorAll('button, a, [role="button"]'))
+                .filter(el => el.offsetParent !== null);
+            // 找出包含 "/ 6" 或 "/6" 的分頁容器附近按鈕
+            const pageLabelEl = Array.from(document.querySelectorAll('*')).find(el =>
+                el.children.length === 0 && /\\/\\s*\\d+/.test((el.innerText || '').trim())
+            );
+            const refY = pageLabelEl ? pageLabelEl.getBoundingClientRect().y : null;
+
+            const candidates = buttons.filter(el => {
+                const r = el.getBoundingClientRect();
+                if (r.width <= 0 || r.height <= 0 || r.width > 90 || r.height > 90) return false;
+                if (refY !== null && Math.abs(r.y - refY) > 60) return false;
+                const txt = (el.innerText || '').trim();
+                const aria = (el.getAttribute('aria-label') || '').toLowerCase();
+                const disabled = el.disabled || el.getAttribute('aria-disabled') === 'true' || /disabled/i.test(el.className || '');
+                if (disabled) return false;
+                return txt === '→' || txt === '>' || txt === '›' || aria.includes('next') || aria.includes('下一頁');
+            });
+
+            if (candidates.length > 0) {
+                // 若有多個箭頭，通常倒數第二個是「下一頁 →」，最後一個是「最末頁 →|」
+                const target = candidates.length >= 2 ? candidates[candidates.length - 2] : candidates[0];
+                target.click();
+                return true;
+            }
+            return false;
         }"""
     )
 
-    # 常見下一頁選擇器與文字
-    next_locators = [
-        page.locator("button[aria-label*='下一頁'], a[aria-label*='下一頁'], [class*='next']:not([class*='disabled']) button, [class*='next']:not([class*='disabled']) a, button[class*='next'], a[class*='next']"),
-        page.get_by_role("button", name=re.compile(r"^(下一頁|>|›|»)$")),
-        page.get_by_role("link", name=re.compile(r"^(下一頁|>|›|»)$")),
-    ]
+    if clicked:
+        for _ in range(10):
+            page.wait_for_timeout(400)
+            if get_table_signature(page) != before_sig:
+                return True
 
-    for loc in next_locators:
-        try:
-            count = loc.count()
-            for i in range(count):
-                el = loc.nth(i)
-                if not el.is_visible(timeout=500):
-                    continue
-                is_disabled = el.is_disabled()
-                aria_disabled = (el.get_attribute("aria-disabled") or "").lower() == "true"
-                cls_attr = (el.get_attribute("class") or "").lower()
-                if is_disabled or aria_disabled or "disabled" in cls_attr:
-                    continue
-
-                el.scroll_into_view_if_needed(timeout=1000)
-                el.click(timeout=2000)
-                page.wait_for_timeout(1800)
-
-                after_signature = page.evaluate(
-                    """() => {
-                        const rows = Array.from(document.querySelectorAll('fr-fund-table-row'));
-                        return rows.map(r => (r.innerText || '').trim().slice(0, 40)).join('|');
-                    }"""
-                )
-                if after_signature and after_signature != before_signature:
-                    return True
-        except Exception:
-            continue
+    # 2. 若頁碼是原生 <select> 下拉選單，直接選擇 next_page_num
+    try:
+        selects = page.locator("select")
+        for i in range(selects.count()):
+            sel = selects.nth(i)
+            if sel.is_visible(timeout=300):
+                options = sel.locator("option").all_inner_texts()
+                if str(next_page_num) in [o.strip() for o in options]:
+                    sel.select_option(str(next_page_num))
+                    for _ in range(10):
+                        page.wait_for_timeout(400)
+                        if get_table_signature(page) != before_sig:
+                            return True
+    except Exception:
+        pass
 
     return False
 
 
 def scrape_fundrich_tisa_list() -> dict:
-    """使用無頭 Chromium 載入基富通 TISA 專區並跨分頁擷取完整基金清單"""
+    """載入基富通 TISA 專區並翻頁抓齊全部 103 檔清單"""
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -192,36 +210,23 @@ def scrape_fundrich_tisa_list() -> dict:
             pass
         page.wait_for_timeout(3000)
 
-        # 若有「顯示全部」或「每頁筆數」下拉/按鈕可先嘗試展開
-        try:
-            all_btn = page.get_by_role("button", name=re.compile(r"全部|All")).first
-            if all_btn.is_visible(timeout=500):
-                all_btn.click(timeout=1500)
-                page.wait_for_timeout(1500)
-        except Exception:
-            pass
-
         collected_by_id = {}
-        max_pages = 15
-
-        for page_num in range(1, max_pages + 1):
-            page_items = parse_rows_on_current_view(page)
-            added_this_page = 0
-            for item in page_items:
+        for page_num in range(1, 10):
+            items = parse_visible_pc_rows(page)
+            added = 0
+            for item in items:
                 fid = item["id"]
                 if fid not in collected_by_id:
                     collected_by_id[fid] = item
-                    added_this_page += 1
-            print(f"[DEBUG] 第 {page_num} 頁解析到 {len(page_items)} 列，新增 {added_this_page} 檔（累計 {len(collected_by_id)} 檔）")
+                    added += 1
+            print(f"[DEBUG] 第 {page_num} 頁解析到 {len(items)} 筆，新增 {added} 檔（累計 {len(collected_by_id)} 檔）")
 
-            moved = click_next_page_if_available(page)
-            if not moved or added_this_page == 0:
+            if not click_next_arrow_or_page(page, page_num + 1):
                 break
 
         body_text = page.inner_text("body")
         holdings_date_match = re.search(r"持股資料日[：:\s]*(\d{4}/\d{2}/\d{2})", body_text)
         holdings_as_of = holdings_date_match.group(1) if holdings_date_match else "2026/10/31"
-
         browser.close()
 
     return {
@@ -239,7 +244,7 @@ def run_fetch():
         scraped_funds = scraped.get("funds", [])
         holdings_as_of = scraped.get("holdings_as_of", "2026/10/31")
     except Exception as exc:
-        print(f"[ERROR] 基富通頁面抓取失敗：{exc}")
+        print(f"[ERROR] 基富通 TISA 專區抓取失敗：{exc}")
         scraped_funds = []
         holdings_as_of = prev_raw.get("holdings_as_of", "2026/10/31")
 
@@ -255,7 +260,7 @@ def run_fetch():
                 "id": fid,
                 "name": item["name"],
                 "issuer": item["issuer"],
-                "tisa_type": "TISA專區",
+                "tisa_type": item.get("tisa_type", "TISA專區"),
                 "category": old.get("category", "TISA精選基金"),
                 "risk_level": item["risk_level"],
                 "ter_pct": old.get("ter_pct", 0.0),
