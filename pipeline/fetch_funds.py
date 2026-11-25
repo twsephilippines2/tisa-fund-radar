@@ -65,7 +65,7 @@ def get_table_signature(page) -> str:
 
 
 def parse_visible_pc_rows(page) -> list[dict]:
-    """解析目前可見的 fr-fund-table-row 列，擷取基金代碼、完整名稱與相關資訊"""
+    """解析目前可見的 fr-fund-table-row 列，擷取基金代碼、完整名稱與風險等級"""
     rows_data = page.evaluate(
         """() => {
             const rows = Array.from(document.querySelectorAll('fr-fund-table-row'));
@@ -132,58 +132,91 @@ def click_next_arrow_or_page(page, next_page_num: int) -> bool:
     page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
     page.wait_for_timeout(800)
 
-    pager_html = page.evaluate(
+    pager_debug = page.evaluate(
         """() => {
-            const el = Array.from(document.querySelectorAll('*')).find(n =>
-                n.children.length === 0 && /\\/\\s*\\d+/.test((n.innerText || '').trim())
-            );
-            if (!el) return 'NO_PAGER_FOUND';
-            let box = el.parentElement;
-            for (let i = 0; i < 3 && box && box.parentElement; i++) {
-                box = box.parentElement;
-            }
-            return box ? box.outerHTML : el.outerHTML;
+            const els = Array.from(document.querySelectorAll('button, a, [role="button"], select'));
+            return els
+                .filter(el => el.offsetParent !== null)
+                .map(el => {
+                    const r = el.getBoundingClientRect();
+                    return {
+                        tag: el.tagName,
+                        txt: (el.innerText || '').trim().replace(/\\s+/g, ' ').slice(0, 20),
+                        aria: el.getAttribute('aria-label') || '',
+                        title: el.getAttribute('title') || '',
+                        cls: (el.className || '').toString().slice(0, 50),
+                        y: Math.round(r.y),
+                        w: Math.round(r.width),
+                        h: Math.round(r.height)
+                    };
+                })
+                .filter(x => x.y > 400 && x.w > 0 && x.h > 0 && x.w <= 120 && x.h <= 90)
+                .slice(-25);
         }"""
     )
-    print(f"[DEBUG] PAGER HTML: {pager_html}")
+    print(f"[DEBUG] BOTTOM CONTROLS (page {next_page_num - 1} -> {next_page_num}): {json.dumps(pager_debug, ensure_ascii=False)}")
 
-    # 嘗試點擊分頁區塊內倒數第二個可點擊元素（通常對應「下一頁 →」，最後一個是「最末頁 →|」）
     clicked = page.evaluate(
         """() => {
-            const el = Array.from(document.querySelectorAll('*')).find(n =>
-                n.children.length === 0 && /\\/\\s*\\d+/.test((n.innerText || '').trim())
-            );
-            if (!el) return false;
-            let box = el.parentElement;
-            for (let i = 0; i < 4 && box && box.parentElement; i++) {
-                box = box.parentElement;
-            }
-            if (!box) return false;
-            const clickables = Array.from(box.querySelectorAll('button, a, [role="button"], span, i, svg'))
-                .filter(node => {
-                    const r = node.getBoundingClientRect();
-                    return r.width > 10 && r.height > 10 && node.offsetParent !== null;
-                });
-            if (clickables.length >= 2) {
-                const target = clickables[clickables.length - 2];
-                (target.closest('button, a, [role="button"]') || target).click();
-                return true;
+            const els = Array.from(document.querySelectorAll('button, a, [role="button"]'))
+                .filter(el => el.offsetParent !== null);
+            for (const el of els) {
+                const r = el.getBoundingClientRect();
+                if (r.y < 400 || r.width <= 0 || r.height <= 0 || r.width > 100 || r.height > 80) continue;
+                const disabled = el.disabled || el.getAttribute('aria-disabled') === 'true' || /disabled/i.test(el.className || '');
+                if (disabled) continue;
+
+                const txt = (el.innerText || '').trim();
+                const aria = (el.getAttribute('aria-label') || '').toLowerCase();
+                const title = (el.getAttribute('title') || '').toLowerCase();
+                const cls = (el.className || '').toString().toLowerCase();
+                const html = (el.innerHTML || '').toLowerCase();
+
+                const isPrev = aria.includes('prev') || aria.includes('上一頁') || title.includes('上一頁') || txt === '←' || txt === '<' || txt === '‹' || txt === '|←';
+                if (isPrev) continue;
+
+                const isNext = (
+                    aria.includes('next') || aria.includes('下一頁') ||
+                    title.includes('下一頁') || title.includes('next') ||
+                    cls.includes('next') ||
+                    txt === '→' || txt === '>' || txt === '›' ||
+                    html.includes('next') || html.includes('arrow-right') || html.includes('chevron-right')
+                );
+                if (isNext) {
+                    el.click();
+                    return true;
+                }
             }
             return false;
         }"""
     )
 
     if clicked:
-        for _ in range(12):
+        for _ in range(15):
             page.wait_for_timeout(400)
             if get_table_signature(page) != before_sig:
                 return True
+
+    try:
+        selects = page.locator("select")
+        for i in range(selects.count()):
+            sel = selects.nth(i)
+            if sel.is_visible(timeout=300):
+                opts = [o.strip() for o in sel.locator("option").all_inner_texts()]
+                if str(next_page_num) in opts:
+                    sel.select_option(str(next_page_num))
+                    for _ in range(15):
+                        page.wait_for_timeout(400)
+                        if get_table_signature(page) != before_sig:
+                            return True
+    except Exception:
+        pass
 
     return False
 
 
 def scrape_fundrich_tisa_list() -> dict:
-    """載入基富通 TISA 專區並翻頁抓齊全部 103 檔清單"""
+    """載入基富通 TISA 專區並跨分頁抓取基金清單"""
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
