@@ -44,21 +44,7 @@ def infer_issuer(name: str, context_text: str) -> str:
     return "TISA合作投信"
 
 
-def pick_best_fund_name(lines: list[str], fund_id: str) -> str:
-    # 優先挑出包含「基金」字樣的完整名稱
-    for line in lines:
-        cleaned = re.sub(r"^(代碼[：:]\s*[A-Z0-9]+|基金代號[：:]\s*[A-Z0-9]+)\s*", "", line).strip()
-        if "基金" in cleaned and len(cleaned) >= 4:
-            return cleaned
-    for line in lines:
-        cleaned = line.strip()
-        if len(cleaned) >= 4 and not re.fullmatch(r"(代碼[：:]\s*)?[A-Z0-9]{4,8}", cleaned):
-            return cleaned
-    return f"代碼：{fund_id}"
-
-
 def scrape_fundrich_tisa_list() -> dict:
-    """使用無頭 Chromium 載入基富通 TISA 專區，捲動/展開後擷取基金清單"""
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -76,94 +62,85 @@ def scrape_fundrich_tisa_list() -> dict:
             pass
         page.wait_for_timeout(4000)
 
-        # 嘗試分段捲動並點擊可能的「看更多／下一頁」按鈕
-        for _ in range(8):
+        # 1. 印出包含 SCH044 的外層 HTML 結構，找出基金名稱與代碼的真實標籤關係
+        dom_probe = page.evaluate(
+            """() => {
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+                let node;
+                while ((node = walker.nextNode())) {
+                    if (node.nodeValue && node.nodeValue.includes('SCH044')) {
+                        let parent = node.parentElement;
+                        for (let i = 0; i < 4 && parent && parent.parentElement; i++) {
+                            parent = parent.parentElement;
+                        }
+                        return parent ? parent.outerHTML.slice(0, 2500) : 'NO_PARENT';
+                    }
+                }
+                return 'SCH044_NOT_IN_MAIN_BODY';
+            }"""
+        )
+        print("=== DOM PROBE (SCH044 附近 HTML) ===")
+        print(dom_probe)
+
+        # 2. 印出頁面上所有分頁器、頁籤或按鈕的文字與 class
+        nav_probe = page.evaluate(
+            """() => {
+                const els = Array.from(document.querySelectorAll('button, a, [role="tab"], [class*="page"], [class*="tab"], [class*="more"]'));
+                return els
+                    .map(el => ({
+                        tag: el.tagName,
+                        cls: (el.className || '').toString().slice(0, 60),
+                        txt: (el.innerText || '').trim().replace(/\\s+/g, ' ').slice(0, 40)
+                    }))
+                    .filter(x => x.txt.length > 0 && x.txt.length < 30)
+                    .slice(0, 50);
+            }"""
+        )
+        print("=== NAV / PAGINATION PROBE ===")
+        print(json.dumps(nav_probe, ensure_ascii=False))
+
+        # 3. 嘗試透過純文字相鄰行配對（基富通通常一筆基金就是連續幾行：名稱 / 代碼 / 淨值 / 報酬率）
+        all_text_parts = []
+        for fr in page.frames:
             try:
-                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                t = fr.inner_text("body")
+                if t.strip():
+                    all_text_parts.append(t)
             except Exception:
                 pass
-            page.wait_for_timeout(1200)
-
-            for btn_text in ["看更多", "顯示更多", "載入更多", "下一頁", "全部"]:
-                try:
-                    btn = page.get_by_role("button", name=re.compile(btn_text)).first
-                    if btn.is_visible(timeout=400):
-                        btn.click(timeout=1500)
-                        page.wait_for_timeout(1200)
-                except Exception:
-                    pass
-
-        all_text_parts = []
-        extracted_items = []
-        seen_ids = set()
-
-        for idx, fr in enumerate(page.frames):
-            try:
-                fr_text = fr.inner_text("body")
-            except Exception:
-                fr_text = ""
-            if fr_text.strip():
-                all_text_parts.append(fr_text)
-
-            try:
-                rows = fr.evaluate(
-                    """() => {
-                        const results = [];
-                        const candidates = Array.from(
-                            document.querySelectorAll('tr, [role="row"], li, .fund-item, [class*="fund"], [class*="list"]')
-                        );
-                        for (const el of candidates) {
-                            const txt = (el.innerText || '').trim();
-                            if (!txt || txt.length < 5 || txt.length > 800) continue;
-
-                            const link = el.querySelector('a[href]');
-                            const href = link ? (link.getAttribute('href') || '') : '';
-                            const hrefCode = href.match(/(?:fundCode=|code=|\\/fund\\/)([A-Z0-9]{4,10})/i);
-
-                            // 常見台灣基金代號格式：3碼英數投信碼 + 3碼數字或英數（例如 SCH044、YUI116、0050 等）
-                            const codeMatches = Array.from(txt.matchAll(/\\b([A-Z0-9]{3}[0-9]{2,3}[A-Z0-9]?)\\b/g)).map(m => m[1]);
-                            const id = (hrefCode && hrefCode[1]) || (codeMatches.length ? codeMatches[0] : '');
-                            if (!id) continue;
-
-                            const upperId = id.toUpperCase();
-                            if (['TISA', 'HTML', 'HTTP', 'HTTPS', 'RR1', 'RR2', 'RR3', 'RR4', 'RR5'].includes(upperId)) {
-                                continue;
-                            }
-
-                            const lines = txt.split('\\n').map(s => s.trim()).filter(Boolean);
-                            const rrMatch = txt.match(/RR[1-5]/);
-                            results.push({
-                                id: upperId,
-                                lines,
-                                fullText: txt,
-                                risk_level: rrMatch ? rrMatch[0] : 'RR4'
-                            });
-                        }
-                        return results;
-                    }"""
-                )
-
-                for r in rows:
-                    rid = r["id"]
-                    if not rid or rid in seen_ids:
-                        continue
-                    seen_ids.add(rid)
-                    best_name = pick_best_fund_name(r["lines"], rid)
-                    extracted_items.append(
-                        {
-                            "id": rid,
-                            "name": best_name,
-                            "issuer": infer_issuer(best_name, r["fullText"]),
-                            "risk_level": r["risk_level"],
-                        }
-                    )
-            except Exception as exc:
-                print(f"[DEBUG] Frame[{idx}] evaluate 失敗：{exc}")
 
         combined_text = "\n".join(all_text_parts)
+        lines = [line.strip() for line in combined_text.split("\n") if line.strip()]
+
+        extracted_items = []
+        seen_ids = set()
+        for i, line in enumerate(lines):
+            # 尋找獨立出現的基金代碼（或 "代碼：SCH044"）
+            m = re.fullmatch(r"(?:代碼[：:]\s*)?([A-Z0-9]{3}[0-9]{2,3}[A-Z0-9]?)", line)
+            if not m:
+                continue
+            fid = m.group(1).upper()
+            if fid in seen_ids or fid in {"TISA", "RR1", "RR2", "RR3", "RR4", "RR5"}:
+                continue
+            seen_ids.add(fid)
+
+            # 往前或往後找 3 行內包含「基金」字樣的完整名稱
+            window = lines[max(0, i - 3) : min(len(lines), i + 4)]
+            best_name = next((w for w in window if "基金" in w and len(w) >= 5), f"代碼：{fid}")
+            context_str = " ".join(window)
+            rr_m = re.search(r"RR[1-5]", context_str)
+
+            extracted_items.append(
+                {
+                    "id": fid,
+                    "name": best_name,
+                    "issuer": infer_issuer(best_name, context_str),
+                    "risk_level": rr_m.group(0) if rr_m else "RR4",
+                }
+            )
+
         holdings_date_match = re.search(r"持股資料日[：:\s]*(\d{4}/\d{2}/\d{2})", combined_text)
         holdings_as_of = holdings_date_match.group(1) if holdings_date_match else "2026/10/31"
-
         browser.close()
 
     return {
@@ -185,14 +162,10 @@ def run_fetch():
         scraped_funds = []
         holdings_as_of = prev_raw.get("holdings_as_of", "2026/10/31")
 
-    if not scraped_funds:
-        print("[WARN] 本次未解析到基金列表。")
-
     merged_funds = []
     for item in scraped_funds:
         fid = item["id"]
         old = prev_map.get(fid, {})
-
         merged_funds.append(
             {
                 "id": fid,
