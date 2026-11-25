@@ -5,6 +5,7 @@ from datetime import datetime
 from playwright.sync_api import sync_playwright
 
 TISA_URL = "https://www.fundrich.com.tw/themeFund/promotionDetail?type=root.TISA.FundList_Web"
+FUND_TABLE_API = "https://apis.fundrich.com.tw/FRSDataCenter/FundTableInfo"
 
 ETF_BENCHMARKS = {
     "0050": {
@@ -54,15 +55,16 @@ def infer_tisa_type(name: str) -> str:
     return "TISA專區"
 
 
-def extract_funds_from_any_json(data, results: dict):
+def extract_funds_from_payload(data, results: dict):
+    """遞迴掃描 FundTableInfo 回傳結構，擷取基金代碼、名稱、風險等級與其他資訊"""
     if isinstance(data, list):
         for item in data:
-            extract_funds_from_any_json(item, results)
+            extract_funds_from_payload(item, results)
     elif isinstance(data, dict):
         code = (
-            data.get("fundCode")
+            data.get("fundId")
+            or data.get("fundCode")
             or data.get("FundCode")
-            or data.get("fundId")
             or data.get("code")
             or ""
         )
@@ -76,10 +78,9 @@ def extract_funds_from_any_json(data, results: dict):
         if isinstance(code, str) and isinstance(name, str):
             code_clean = code.strip().upper()
             name_clean = name.strip()
-            if re.fullmatch(r"[A-Za-z0-9]{4,10}", code_clean) and "基金" in name_clean:
-                rr = str(data.get("riskLevel") or data.get("rr") or data.get("risk") or "RR4").upper()
-                if not re.fullmatch(r"RR[1-5]", rr):
-                    rr = "RR4"
+            if re.fullmatch(r"[A-Za-z0-9]{3,12}", code_clean) and ("基金" in name_clean or len(name_clean) >= 4):
+                rr_raw = str(data.get("riskLevel") or data.get("rr") or data.get("risk") or "RR4").upper()
+                rr = rr_raw if re.fullmatch(r"RR[1-5]", rr_raw) else (f"RR{rr_raw}" if re.fullmatch(r"[1-5]", rr_raw) else "RR4")
                 issuer = (
                     data.get("companyName")
                     or data.get("issuerName")
@@ -92,77 +93,20 @@ def extract_funds_from_any_json(data, results: dict):
                     "issuer": str(issuer).strip() or infer_issuer(name_clean),
                     "tisa_type": infer_tisa_type(name_clean),
                     "risk_level": rr,
+                    "nav": data.get("nav") or data.get("netWorth") or data.get("price"),
+                    "nav_date": data.get("navDate") or data.get("priceDate") or data.get("date"),
+                    "currency": data.get("currency") or data.get("curr") or "",
+                    "fund_size": data.get("fundSize") or data.get("size"),
                 }
         for val in data.values():
             if isinstance(val, (dict, list)):
-                extract_funds_from_any_json(val, results)
-
-
-def parse_visible_pc_rows(page) -> list[dict]:
-    rows_data = page.evaluate(
-        """() => {
-            const rows = Array.from(document.querySelectorAll('fr-fund-table-row'));
-            return rows.map(row => {
-                if (row.offsetParent === null) return null;
-                const cols = Array.from(row.querySelectorAll(':scope > div > .col, .col')).map(c =>
-                    (c.innerText || '').trim().replace(/\\s+/g, ' ')
-                );
-                const fullText = (row.innerText || '').trim();
-                return { cols, fullText };
-            }).filter(Boolean);
-        }"""
-    )
-
-    parsed = []
-    for r in rows_data:
-        cols = r.get("cols", [])
-        full_text = r.get("fullText", "")
-        if not full_text:
-            continue
-
-        fid = ""
-        fname = ""
-        for idx, c in enumerate(cols):
-            c_clean = c.strip()
-            if re.fullmatch(r"[A-Za-z]{2,4}[0-9]{2,4}[A-Za-z0-9]?", c_clean):
-                if c_clean.upper() not in {"TISA", "RR1", "RR2", "RR3", "RR4", "RR5"}:
-                    fid = c_clean.upper()
-                    if idx + 1 < len(cols) and len(cols[idx + 1]) >= 4:
-                        fname = cols[idx + 1].strip()
-                    break
-
-        if not fid:
-            m_code = re.search(r"\b([A-Za-z]{2,4}[0-9]{2,4}[A-Za-z0-9]?)\b", full_text)
-            if m_code and m_code.group(1).upper() not in {"TISA", "RR1", "RR2", "RR3", "RR4", "RR5"}:
-                fid = m_code.group(1).upper()
-
-        if not fid:
-            continue
-
-        if not fname or "基金" not in fname:
-            lines = [ln.strip() for ln in full_text.splitlines() if ln.strip()]
-            fname = next(
-                (ln for ln in lines if "基金" in ln and len(ln) >= 4),
-                fname or f"代碼：{fid}",
-            )
-
-        rr_match = re.search(r"\b(RR[1-5])\b", full_text, re.I)
-        parsed.append(
-            {
-                "id": fid,
-                "name": fname,
-                "issuer": infer_issuer(fname),
-                "tisa_type": infer_tisa_type(fname),
-                "risk_level": rr_match.group(1).upper() if rr_match else "RR4",
-            }
-        )
-
-    return parsed
+                extract_funds_from_payload(val, results)
 
 
 def scrape_fundrich_tisa_list() -> dict:
     api_collected: dict[str, dict] = {}
-    table_info_logs = []
+    captured_template_payload = None
+    captured_headers = None
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -177,25 +121,25 @@ def scrape_fundrich_tisa_list() -> dict:
         page = context.new_page()
 
         def on_response(response):
+            nonlocal captured_template_payload, captured_headers
             url = response.url
-            if "FRSDataCenter" in url:
+            if "FundTableInfo" in url:
                 req = response.request
-                post_data = req.post_data or ""
+                if req.post_data and not captured_template_payload:
+                    try:
+                        captured_template_payload = json.loads(req.post_data)
+                        captured_headers = {
+                            k: v for k, v in req.headers.items()
+                            if k.lower() in {"content-type", "accept", "authorization", "x-requested-with", "origin", "referer"}
+                        }
+                    except Exception:
+                        pass
                 try:
                     raw_txt = response.text()
                     if raw_txt.strip().startswith(("{", "[")):
-                        parsed_json = json.loads(raw_txt)
-                        extract_funds_from_any_json(parsed_json, api_collected)
-                        if "FundTableInfo" in url:
-                            top_keys = list(parsed_json.keys()) if isinstance(parsed_json, dict) else f"list({len(parsed_json)})"
-                            table_info_logs.append({
-                                "post": post_data[:400],
-                                "top_keys": top_keys,
-                                "resp_preview": raw_txt[:600],
-                            })
-                except Exception as e:
-                    if "FundTableInfo" in url:
-                        table_info_logs.append({"post": post_data[:400], "err": str(e)})
+                        extract_funds_from_payload(json.loads(raw_txt), api_collected)
+                except Exception:
+                    pass
 
         page.on("response", on_response)
         page.goto(TISA_URL, wait_until="domcontentloaded", timeout=60000)
@@ -203,15 +147,52 @@ def scrape_fundrich_tisa_list() -> dict:
             page.wait_for_selector("fr-fund-table-row", timeout=25000)
         except Exception:
             pass
-        page.wait_for_timeout(4000)
+        page.wait_for_timeout(3000)
 
-        for idx, log_item in enumerate(table_info_logs):
-            print(f"[DEBUG] FUND_TABLE_INFO #{idx + 1}: {json.dumps(log_item, ensure_ascii=False)}")
+        base_payload = captured_template_payload or {
+            "data": {
+                "list": "root.TISA.FundList_Web",
+                "currentPage": 1,
+                "userstock": False,
+            }
+        }
+        req_headers = captured_headers or {"Content-Type": "application/json"}
 
-        dom_items = parse_visible_pc_rows(page)
-        merged_map = {item["id"]: item for item in dom_items}
-        merged_map.update(api_collected)
-        print(f"[DEBUG] DOM={len(dom_items)}, API={len(api_collected)}, MERGED={len(merged_map)}")
+        # 依 currentPage 1..10 逐頁請求 FundTableInfo，直到抓滿或無新資料
+        for page_num in range(1, 11):
+            payload_copy = json.loads(json.dumps(base_payload))
+            if isinstance(payload_copy.get("data"), dict):
+                payload_copy["data"]["currentPage"] = page_num
+            else:
+                payload_copy["currentPage"] = page_num
+
+            before_cnt = len(api_collected)
+            try:
+                resp_text = page.evaluate(
+                    """async ({ url, headers, bodyStr }) => {
+                        const res = await fetch(url, {
+                            method: 'POST',
+                            headers,
+                            body: bodyStr
+                        });
+                        return await res.text();
+                    }""",
+                    {
+                        "url": FUND_TABLE_API,
+                        "headers": req_headers,
+                        "bodyStr": json.dumps(payload_copy, ensure_ascii=False),
+                    },
+                )
+                if resp_text and resp_text.strip().startswith(("{", "[")):
+                    extract_funds_from_payload(json.loads(resp_text), api_collected)
+            except Exception as e:
+                print(f"[DEBUG] currentPage={page_num} 請求失敗：{e}")
+                break
+
+            added = len(api_collected) - before_cnt
+            print(f"[DEBUG] currentPage={page_num} 新增 {added} 檔（累計 {len(api_collected)} 檔）")
+            if page_num > 1 and added == 0:
+                break
 
         body_text = page.inner_text("body")
         holdings_date_match = re.search(r"持股資料日[：:\s]*(\d{4}/\d{2}/\d{2})", body_text)
@@ -220,7 +201,7 @@ def scrape_fundrich_tisa_list() -> dict:
 
     return {
         "holdings_as_of": holdings_as_of,
-        "funds": list(merged_map.values()),
+        "funds": list(api_collected.values()),
     }
 
 
