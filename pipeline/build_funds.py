@@ -1,228 +1,153 @@
 import json
 import os
-from datetime import datetime
+import time
 import numpy as np
+from datetime import datetime
+from pydantic import BaseModel, Field
 from google import genai
 from google.genai import types
-from pydantic import BaseModel, Field
-import time
 
-# ==========================================
-# 1. 定義 Gemini 結構化輸出 Schema（確保前端不破版）
-# ==========================================
-class FundAIDiagnosis(BaseModel):
+
+class FundDiagnosis(BaseModel):
     style_mismatch_flag: bool = Field(
-        description="基金名稱與實際持股風格是否出現明顯落差（例如掛名高股息但科技股占比極高）"
+        description="若基金名稱含「高股息/穩健/平衡」，但科技股占比>60%或前十大高度集中電子成長股，標記為 True"
     )
     mismatch_badge: str = Field(
-        description="若 style_mismatch_flag 為 true，給出 6~10 字的警示標籤，如「名稱有股息・持股偏成長」；否則回傳「名實相符」"
+        description="簡短警示標籤（6~12字），例如：'名稱有股息・持股偏成長' 或 '名實相符'"
     )
     plain_summary: str = Field(
-        description="給投資小白看的 40~60 字白話診斷總結，點出這檔基金的真實性格、集中度風險或換股動向，嚴禁編造未提供的數字"
+        description="用白話文說明該基金實際持股集中度、與0050/00878重疊風險及波動度（限80字內）"
     )
     radar_action_note: str = Field(
-        description="根據跨月持股與產業變化，用 25~40 字白話說明經理人近期是在追高科技、轉向防禦或維持原狀"
+        description="針對近期成分股增減變化的白話觀察（限50字內）"
     )
 
 
-# ==========================================
-# 2. 確定性計算層（算數交給程式，絕不讓 AI 瞎猜）
-# ==========================================
 def calculate_overlap(fund_holdings: dict[str, float], etf_holdings: dict[str, float]) -> float:
-    """計算基金與基準 ETF（如 0050、00878）的持股權重交集重疊率（%）"""
+    if not fund_holdings or not etf_holdings:
+        return 0.0
     common_stocks = set(fund_holdings.keys()) & set(etf_holdings.keys())
     overlap = sum(min(fund_holdings[s], etf_holdings[s]) for s in common_stocks)
-    return round(overlap, 1)
+    return round(overlap, 2)
 
 
-def calculate_risk_metrics(
-    nav_series: list[float],
-    risk_free_rate: float = 0.015,
-    periods_per_year: int = 252,
-) -> dict:
-    """
-    根據歷史淨值序列計算最大回撤（Max Drawdown）、年化波動度與夏普值。
-    periods_per_year：日資料=252、週資料=52、月資料=12。
-    """
-    prices = np.array(nav_series, dtype=float)
-    if len(prices) < 2 or np.any(prices <= 0):
+def calculate_risk_metrics(nav_series: list[float], periods_per_year: int = 252, rf_annual: float = 0.015) -> dict:
+    if not nav_series or len(nav_series) < 2:
         return {
             "max_drawdown_pct": 0.0,
             "annual_volatility_pct": 0.0,
             "sharpe_ratio": 0.0,
         }
+    nav = np.array(nav_series, dtype=float)
+    returns = np.diff(nav) / nav[:-1]
 
-    returns = np.diff(prices) / prices[:-1]
+    running_max = np.maximum.accumulate(nav)
+    drawdowns = (nav - running_max) / running_max
+    max_drawdown = float(np.min(drawdowns) * 100)
 
-    # 最大回撤
-    cum_max = np.maximum.accumulate(prices)
-    drawdowns = (prices - cum_max) / cum_max
-    max_dd = round(float(np.min(drawdowns)) * 100, 1)
-
-    # 年化波動度與夏普值
-    vol_decimal = float(np.std(returns, ddof=1) * np.sqrt(periods_per_year))
-    ann_vol = round(vol_decimal * 100, 1)
-
-    total_return = float(prices[-1] / prices[0])
-    ann_ret = total_return ** (periods_per_year / len(returns)) - 1.0
-    sharpe = round((ann_ret - risk_free_rate) / vol_decimal, 2) if vol_decimal > 1e-9 else 0.0
+    ann_vol = float(np.std(returns, ddof=1) * np.sqrt(periods_per_year) * 100)
+    ann_return = float(np.mean(returns) * periods_per_year)
+    sharpe = float((ann_return - rf_annual) / (ann_vol / 100)) if ann_vol > 0 else 0.0
 
     return {
-        "max_drawdown_pct": max_dd,
-        "annual_volatility_pct": ann_vol,
-        "sharpe_ratio": sharpe,
+        "max_drawdown_pct": round(max_drawdown, 2),
+        "annual_volatility_pct": round(ann_vol, 2),
+        "sharpe_ratio": round(sharpe, 2),
     }
 
 
-def calculate_holdings_diff(prev_holdings: dict[str, float], curr_holdings: dict[str, float]) -> dict:
-    """比對前後兩期持股，抓出新增/剔除標與權重變化最大的個股"""
-    added = [s for s in curr_holdings if s not in prev_holdings]
-    removed = [s for s in prev_holdings if s not in curr_holdings]
+def calculate_holdings_diff(prev_h: dict[str, float], curr_h: dict[str, float]) -> dict:
+    if not prev_h or not curr_h:
+        return {"added": [], "removed": [], "top_weight_changes": []}
+    prev_keys, curr_keys = set(prev_h.keys()), set(curr_h.keys())
+    added = sorted(list(curr_keys - prev_keys))
+    removed = sorted(list(prev_keys - curr_keys))
+
     changes = []
-    for stock in set(prev_holdings.keys()) | set(curr_holdings.keys()):
-        diff = round(curr_holdings.get(stock, 0.0) - prev_holdings.get(stock, 0.0), 2)
+    for stock in prev_keys | curr_keys:
+        diff = round(curr_h.get(stock, 0.0) - prev_h.get(stock, 0.0), 2)
         if abs(diff) >= 0.5:
             changes.append({"stock": stock, "diff_pct": diff})
     changes.sort(key=lambda x: abs(x["diff_pct"]), reverse=True)
+
     return {
-        "added": added[:5],
-        "removed": removed[:5],
+        "added": added,
+        "removed": removed,
         "top_weight_changes": changes[:5],
     }
 
 
-# ==========================================
-# 3. AI 語意摘要與反差偵測層（Gemini API）
-# ==========================================
-def generate_ai_insight(client: genai.Client, fund_metrics: dict) -> dict:
+def generate_ai_insight(client: genai.Client, fund_payload: dict) -> dict:
+    # 若尚未取得持股明細，先不耗用 Gemini 配額
+    if not fund_payload.get("top_holdings"):
+        return {
+            "style_mismatch_flag": False,
+            "mismatch_badge": "已收錄清單",
+            "plain_summary": f"已自基富通 TISA 專區收錄（風險等級 {fund_payload['risk_level']}），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+            "radar_action_note": "等待補齊月報前十大持股明細。",
+        }
+
     prompt = f"""
-你是一位專業且擅長用白話向投資新手解釋的基金分析師。
-請根據以下「已由程式精確計算完成」的基金數據，產出結構化的白話診斷。
-嚴格遵守規則：只能引用下列提供的數字，不可自行捏造報酬率或持股比例。
+    你是台灣共同基金與 TISA 退休投資分析師。請根據以下真實量化指標，產出精準、客觀、無行銷話術的白話診斷：
+    基金名稱：{fund_payload['name']}
+    投資類型：{fund_payload['category']}
+    科技股占比：{fund_payload['tech_exposure_pct']}%
+    最大持股權重（台積電）：{fund_payload['tsmc_pct']}%
+    與 0050 持股重疊度：{fund_payload['overlap_0050_pct']}%
+    與 00878 持股重疊度：{fund_payload['overlap_00878_pct']}%
+    最大回撤：{fund_payload['risk']['max_drawdown_pct']}%
+    年化波動度：{fund_payload['risk']['annual_volatility_pct']}%
+    近期新增持股：{fund_payload['holdings_diff']['added']}
+    近期剔除持股：{fund_payload['holdings_diff']['removed']}
+    """
 
-【基金資料】
-- 基金名稱：{fund_metrics['name']}
-- 名義分類：{fund_metrics['category']}
-- 實際科技股占比：{fund_metrics['tech_exposure_pct']}%
-- 台積電單一持股占比：{fund_metrics['tsmc_pct']}%
-- 與 0050 重疊率：{fund_metrics['overlap_0050_pct']}%
-- 與高股息 ETF (00878) 重疊率：{fund_metrics['overlap_00878_pct']}%
-- 最大回撤：{fund_metrics['risk']['max_drawdown_pct']}%
-- 年化波動度：{fund_metrics['risk']['annual_volatility_pct']}%
-- 夏普值：{fund_metrics['risk']['sharpe_ratio']}
-- 跨月持股變動摘要：{json.dumps(fund_metrics['holdings_diff'], ensure_ascii=False)}
-"""
-
-    backoffs = [3, 8, 15]
-    last_err = None
-
-    for attempt, wait_sec in enumerate(backoffs, start=1):
+    max_retries = 3
+    for attempt in range(max_retries):
         try:
             response = client.models.generate_content(
-                model="gemini-3.8-flash",
+                model="gemini-2.5-flash",
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     response_mime_type="application/json",
-                    response_schema=FundAIDiagnosis,
+                    response_schema=FundDiagnosis,
                     temperature=0.2,
                 ),
             )
             return json.loads(response.text)
         except Exception as exc:
-            last_err = exc
-            if attempt < len(backoffs):
-                time.sleep(wait_sec)
+            print(f"[WARN] {fund_payload['id']} 第 {attempt + 1} 次呼叫失敗：{exc}")
+            if attempt < max_retries - 1:
+                time.sleep(5 * (attempt + 1))
 
-    print(f"[WARN] {fund_metrics['id']} AI 摘要暫時失敗，改用備援文案：{last_err}")
-    mismatch = fund_metrics["tech_exposure_pct"] >= 60 and "高股息" in fund_metrics["name"]
     return {
-        "style_mismatch_flag": mismatch,
-        "mismatch_badge": "名稱有股息・持股偏成長" if mismatch else "待AI更新",
-        "plain_summary": (
-            f"科技股占比 {fund_metrics['tech_exposure_pct']}%、台積電 {fund_metrics['tsmc_pct']}%，"
-            f"最大回撤 {fund_metrics['risk']['max_drawdown_pct']}%；AI 服務暫時忙碌，稍後重新執行即可更新完整診斷。"
+        "style_mismatch_flag": fund_payload["tech_exposure_pct"] > 60 and (
+            "股息" in fund_payload["name"] or "平衡" in fund_payload["name"]
         ),
+        "mismatch_badge": "名稱有股息・持股偏成長" if fund_payload["tech_exposure_pct"] > 60 else "AI暫忙",
+        "plain_summary": f"科技股占比 {fund_payload['tech_exposure_pct']}%、台積電 {fund_payload['tsmc_pct']}%，最大回撤 {fund_payload['risk']['max_drawdown_pct']}%；AI 服務暫時忙碌，稍後重新執行即可更新完整診斷。",
         "radar_action_note": "AI 摘要暫時忙碌，建議稍後手動重跑或等待下次排程更新。",
     }
 
 
-# ==========================================
-# 4. 主流程組裝與輸出 funds.json
-# ==========================================
 def run_pipeline():
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+    if not os.path.exists("data/raw_funds.json"):
+        raise FileNotFoundError("找不到 data/raw_funds.json，請先執行 fetch_funds.py")
 
-    # 範例基準 ETF 成分股權重（%）
-    etf_0050 = {
-        "2330 台積電": 54.2,
-        "2317 鴻海": 5.1,
-        "2454 聯發科": 4.3,
-        "2308 台達電": 2.1,
-    }
-    etf_00878 = {
-        "2382 廣達": 4.8,
-        "3231 緯創": 4.2,
-        "2881 富邦金": 4.5,
-        "2882 國泰金": 4.1,
-    }
+    with open("data/raw_funds.json", "r", encoding="utf-8") as fp:
+        raw_data = json.load(fp)
 
-    # 多檔基金清單範例（若 nav_history 為月淨值，periods_per_year 設為 12；日淨值則設為 252）
-    sample_funds = [
-        {
-            "id": "YUI116",
-            "name": "元大台灣高股息優質龍頭證券投資信託基金-新台幣R類型",
-            "issuer": "元大投信",
-            "tisa_type": "好好退休",
-            "category": "台股主動型",
-            "risk_level": "RR4",
-            "ter_pct": 1.15,
-            "rule_note": "定期定額滿24個月享0手續費與優惠經理費",
-            "tech_exposure_pct": 89.0,
-            "periods_per_year": 12,
-            "prev_holdings": {
-                "2330 台積電": 9.8,
-                "2454 聯發科": 7.5,
-                "2382 廣達": 5.2,
-                "2303 聯電": 3.1,
-            },
-            "curr_holdings": {
-                "2330 台積電": 11.4,
-                "2454 聯發科": 8.6,
-                "2308 台達電": 6.1,
-                "3017 奇鋐": 4.2,
-            },
-            "nav_history": [32.0, 34.5, 38.0, 31.2, 35.8, 37.22],
-        },
-        {
-            "id": "SAMPLE002",
-            "name": "範例穩健平衡與高息配置基金-新台幣R類型",
-            "issuer": "範例投信",
-            "tisa_type": "好好退休",
-            "category": "台股平衡型",
-            "risk_level": "RR3",
-            "ter_pct": 0.85,
-            "rule_note": "定期定額享手續費優惠",
-            "tech_exposure_pct": 38.5,
-            "periods_per_year": 12,
-            "prev_holdings": {
-                "2881 富邦金": 6.0,
-                "2882 國泰金": 5.5,
-                "2330 台積電": 8.0,
-                "2412 中華電": 4.2,
-            },
-            "curr_holdings": {
-                "2881 富邦金": 6.4,
-                "2882 國泰金": 5.8,
-                "2330 台積電": 8.5,
-                "2412 中華電": 4.5,
-            },
-            "nav_history": [15.2, 15.5, 15.8, 15.4, 15.9, 16.2],
-        },
-    ]
+    benchmarks = raw_data.get("etf_benchmarks", {})
+    etf_0050 = benchmarks.get("0050", {})
+    etf_00878 = benchmarks.get("00878", {})
+    funds_list = raw_data.get("funds", [])
+
+    api_key = os.environ.get("GEMINI_API_KEY", "")
+    client = genai.Client(api_key=api_key) if api_key else None
 
     output_records = []
-    for f in sample_funds:
-        curr_h = f["curr_holdings"]
+    for f in funds_list:
+        curr_h = f.get("curr_holdings", {})
+        prev_h = f.get("prev_holdings", {})
         metrics = {
             "id": f["id"],
             "name": f["name"],
@@ -232,24 +157,36 @@ def run_pipeline():
             "risk_level": f["risk_level"],
             "ter_pct": f["ter_pct"],
             "rule_note": f["rule_note"],
-            "tech_exposure_pct": f["tech_exposure_pct"],
+            "tech_exposure_pct": f.get("tech_exposure_pct", 0.0),
             "tsmc_pct": curr_h.get("2330 台積電", 0.0),
             "overlap_0050_pct": calculate_overlap(curr_h, etf_0050),
             "overlap_00878_pct": calculate_overlap(curr_h, etf_00878),
             "risk": calculate_risk_metrics(
-                f["nav_history"],
+                f.get("nav_history", []),
                 periods_per_year=f.get("periods_per_year", 252),
             ),
-            "holdings_diff": calculate_holdings_diff(f["prev_holdings"], curr_h),
+            "holdings_diff": calculate_holdings_diff(prev_h, curr_h),
             "top_holdings": [{"name": k, "weight": v} for k, v in curr_h.items()],
         }
 
-        metrics["ai_diagnosis"] = generate_ai_insight(client, metrics)
+        if client:
+            metrics["ai_diagnosis"] = generate_ai_insight(client, metrics)
+            if metrics["top_holdings"]:
+                time.sleep(1.5)
+        else:
+            metrics["ai_diagnosis"] = {
+                "style_mismatch_flag": False,
+                "mismatch_badge": "未設定API金鑰",
+                "plain_summary": "未偵測到 GEMINI_API_KEY。",
+                "radar_action_note": "-",
+            }
+
         output_records.append(metrics)
 
     final_payload = {
         "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M"),
-        "holdings_as_of": "2026/10/31",
+        "holdings_as_of": raw_data.get("holdings_as_of", "2026/10/31"),
+        "source": raw_data.get("source", "基富通 FundRich TISA 專區"),
         "total_count": len(output_records),
         "funds": output_records,
     }
@@ -257,7 +194,7 @@ def run_pipeline():
     os.makedirs("data", exist_ok=True)
     with open("data/funds.json", "w", encoding="utf-8") as fp:
         json.dump(final_payload, fp, ensure_ascii=False, indent=2)
-    print("已成功產出 data/funds.json")
+    print(f"已成功產出 data/funds.json，共 {len(output_records)} 檔基金")
 
 
 if __name__ == "__main__":
