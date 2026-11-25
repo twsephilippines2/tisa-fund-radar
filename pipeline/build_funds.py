@@ -5,7 +5,7 @@ import numpy as np
 from google import genai
 from google.genai import types
 from pydantic import BaseModel, Field
-
+import time
 
 # ==========================================
 # 1. 定義 Gemini 結構化輸出 Schema（確保前端不破版）
@@ -113,16 +113,37 @@ def generate_ai_insight(client: genai.Client, fund_metrics: dict) -> dict:
 - 跨月持股變動摘要：{json.dumps(fund_metrics['holdings_diff'], ensure_ascii=False)}
 """
 
-    response = client.models.generate_content(
-        model="gemini-3.8-flash",
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            response_schema=FundAIDiagnosis,
-            temperature=0.2,
+    backoffs = [3, 8, 15]
+    last_err = None
+
+    for attempt, wait_sec in enumerate(backoffs, start=1):
+        try:
+            response = client.models.generate_content(
+                model="gemini-3.8-flash",
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    response_schema=FundAIDiagnosis,
+                    temperature=0.2,
+                ),
+            )
+            return json.loads(response.text)
+        except Exception as exc:
+            last_err = exc
+            if attempt < len(backoffs):
+                time.sleep(wait_sec)
+
+    print(f"[WARN] {fund_metrics['id']} AI 摘要暫時失敗，改用備援文案：{last_err}")
+    mismatch = fund_metrics["tech_exposure_pct"] >= 60 and "高股息" in fund_metrics["name"]
+    return {
+        "style_mismatch_flag": mismatch,
+        "mismatch_badge": "名稱有股息・持股偏成長" if mismatch else "待AI更新",
+        "plain_summary": (
+            f"科技股占比 {fund_metrics['tech_exposure_pct']}%、台積電 {fund_metrics['tsmc_pct']}%，"
+            f"最大回撤 {fund_metrics['risk']['max_drawdown_pct']}%；AI 服務暫時忙碌，稍後重新執行即可更新完整診斷。"
         ),
-    )
-    return json.loads(response.text)
+        "radar_action_note": "AI 摘要暫時忙碌，建議稍後手動重跑或等待下次排程更新。",
+    }
 
 
 # ==========================================
