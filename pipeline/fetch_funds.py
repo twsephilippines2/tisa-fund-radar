@@ -5,7 +5,6 @@ from datetime import datetime
 from playwright.sync_api import sync_playwright
 
 TISA_URL = "https://www.fundrich.com.tw/themeFund/promotionDetail?type=root.TISA.FundList_Web"
-FUND_TABLE_API = "https://apis.fundrich.com.tw/FRSDataCenter/FundTableInfo"
 
 ETF_BENCHMARKS = {
     "0050": {
@@ -99,30 +98,6 @@ def extract_funds_from_any_json(data, results: dict):
                 extract_funds_from_any_json(val, results)
 
 
-def bump_page_size_in_payload(obj, target_size: int = 300):
-    changed = False
-    if isinstance(obj, dict):
-        for k, v in obj.items():
-            kl = k.lower()
-            if kl in {"pagesize", "page_size", "perpage", "per_page", "rows", "limit", "size"} and isinstance(v, int):
-                if v < target_size:
-                    obj[k] = target_size
-                    changed = True
-            elif kl in {"pageno", "pageindex", "page_number", "page", "currentpage"} and isinstance(v, int):
-                if v > 1:
-                    obj[k] = 1
-                    changed = True
-            elif isinstance(v, (dict, list)):
-                if bump_page_size_in_payload(v, target_size):
-                    changed = True
-    elif isinstance(obj, list):
-        for item in obj:
-            if isinstance(item, (dict, list)):
-                if bump_page_size_in_payload(item, target_size):
-                    changed = True
-    return changed
-
-
 def parse_visible_pc_rows(page) -> list[dict]:
     rows_data = page.evaluate(
         """() => {
@@ -186,8 +161,8 @@ def parse_visible_pc_rows(page) -> list[dict]:
 
 
 def scrape_fundrich_tisa_list() -> dict:
-    captured_requests = []
     api_collected: dict[str, dict] = {}
+    table_info_logs = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -203,32 +178,24 @@ def scrape_fundrich_tisa_list() -> dict:
 
         def on_response(response):
             url = response.url
-            if "FundTableInfo" in url or "ThematicFundActivityInfo" in url:
+            if "FRSDataCenter" in url:
                 req = response.request
                 post_data = req.post_data or ""
-                headers = dict(req.headers)
                 try:
                     raw_txt = response.text()
-                    sample = raw_txt[:400]
                     if raw_txt.strip().startswith(("{", "[")):
                         parsed_json = json.loads(raw_txt)
                         extract_funds_from_any_json(parsed_json, api_collected)
+                        if "FundTableInfo" in url:
+                            top_keys = list(parsed_json.keys()) if isinstance(parsed_json, dict) else f"list({len(parsed_json)})"
+                            table_info_logs.append({
+                                "post": post_data[:400],
+                                "top_keys": top_keys,
+                                "resp_preview": raw_txt[:600],
+                            })
                 except Exception as e:
-                    sample = f"<parse err: {e}>"
-
-                captured_requests.append({
-                    "url": url,
-                    "method": req.method,
-                    "post_data": post_data[:500],
-                    "sample": sample,
-                })
-                if "FundTableInfo" in url and post_data:
-                    # 儲存完整請求供後續放大 pageSize 重打
-                    captured_requests[-1]["full_post_data"] = post_data
-                    captured_requests[-1]["full_headers"] = {
-                        k: v for k, v in headers.items()
-                        if k.lower() in {"content-type", "accept", "authorization", "x-requested-with", "origin", "referer"}
-                    }
+                    if "FundTableInfo" in url:
+                        table_info_logs.append({"post": post_data[:400], "err": str(e)})
 
         page.on("response", on_response)
         page.goto(TISA_URL, wait_until="domcontentloaded", timeout=60000)
@@ -238,41 +205,13 @@ def scrape_fundrich_tisa_list() -> dict:
             pass
         page.wait_for_timeout(4000)
 
-        for entry in captured_requests:
-            print(f"[DEBUG] API_REQ: {entry['method']} {entry['url']} | POST={entry['post_data']}")
-            print(f"[DEBUG] API_RESP_SAMPLE: {entry['sample']}")
-
-        # 嘗試用瀏覽器 fetch 改放大 pageSize 重打 FundTableInfo
-        for entry in captured_requests:
-            if "FundTableInfo" in entry["url"] and entry.get("full_post_data"):
-                try:
-                    payload_obj = json.loads(entry["full_post_data"])
-                    if bump_page_size_in_payload(payload_obj, 300):
-                        req_headers = entry.get("full_headers") or {"Content-Type": "application/json"}
-                        big_resp = page.evaluate(
-                            """async ({ url, headers, bodyStr }) => {
-                                const res = await fetch(url, {
-                                    method: 'POST',
-                                    headers,
-                                    body: bodyStr
-                                });
-                                return await res.text();
-                            }""",
-                            {
-                                "url": entry["url"],
-                                "headers": req_headers,
-                                "bodyStr": json.dumps(payload_obj, ensure_ascii=False),
-                            },
-                        )
-                        if big_resp and big_resp.strip().startswith(("{", "[")):
-                            extract_funds_from_any_json(json.loads(big_resp), api_collected)
-                            print(f"[DEBUG] 放大 pageSize 後累計抓到 {len(api_collected)} 檔")
-                except Exception as e:
-                    print(f"[DEBUG] 重打 FundTableInfo 失敗：{e}")
+        for idx, log_item in enumerate(table_info_logs):
+            print(f"[DEBUG] FUND_TABLE_INFO #{idx + 1}: {json.dumps(log_item, ensure_ascii=False)}")
 
         dom_items = parse_visible_pc_rows(page)
         merged_map = {item["id"]: item for item in dom_items}
         merged_map.update(api_collected)
+        print(f"[DEBUG] DOM={len(dom_items)}, API={len(api_collected)}, MERGED={len(merged_map)}")
 
         body_text = page.inner_text("body")
         holdings_date_match = re.search(r"持股資料日[：:\s]*(\d{4}/\d{2}/\d{2})", body_text)
