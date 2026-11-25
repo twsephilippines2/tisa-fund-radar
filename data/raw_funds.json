@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-11-25 12:18",
+  "fetched_at": "2026-11-25 14:08",
   "source": "基富通 FundRich TISA 專區",
   "source_url": "https://www.fundrich.com.tw/themeFund/promotionDetail?type=root.TISA.FundList_Web",
   "holdings_as_of": "2026/10/31",
-  "total_count": 16,
+  "total_count": 14,
   "etf_benchmarks": {
     "0050": {
       "2330 台積電": 54.2,
@@ -19,21 +19,6 @@
     }
   },
   "funds": [
-    {
-      "id": "TISA",
-      "name": "【TISA級別】兆豐全球證券投資信託基金-TISA",
-      "issuer": "TISA合作投信",
-      "tisa_type": "TISA專區",
-      "category": "TISA精選基金",
-      "risk_level": "RR4",
-      "ter_pct": 0.0,
-      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "periods_per_year": 252,
-      "prev_holdings": {},
-      "curr_holdings": {},
-      "nav_history": []
-    },
     {
       "id": "SCH044",
       "name": "代碼：SCH044",
@@ -97,21 +82,6 @@
     {
       "id": "SIN064",
       "name": "代碼：SIN064",
-      "issuer": "TISA合作投信",
-      "tisa_type": "TISA專區",
-      "category": "TISA精選基金",
-      "risk_level": "RR4",
-      "ter_pct": 0.0,
-      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
-      "tech_exposure_pct": 0.0,
-      "periods_per_year": 252,
-      "prev_holdings": {},
-      "curr_holdings": {},
-      "nav_history": []
-    },
-    {
-      "id": "PGIM",
-      "name": "【好好退休】玉山金滿意證券投資信託基金—R級別(原：PGIM保德信金滿意證券投資信託基金—R級別)",
       "issuer": "TISA合作投信",
       "tisa_type": "TISA專區",
       "category": "TISA精選基金",
