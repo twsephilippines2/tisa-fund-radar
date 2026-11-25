@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25 15:46",
+  "updated_at": "2026-11-25 15:58",
   "holdings_as_of": "2026/10/31",
   "source": "基富通 FundRich TISA 專區",
   "total_count": 103,
@@ -202,11 +202,11 @@
         "removed": [],
         "top_weight_changes": [
           {
-            "stock": "2330 台積電",
+            "stock": "2454 聯發科",
             "diff_pct": 0.8
           },
           {
-            "stock": "2454 聯發科",
+            "stock": "2330 台積電",
             "diff_pct": 0.8
           }
         ]
@@ -1327,11 +1327,11 @@
         "removed": [],
         "top_weight_changes": [
           {
-            "stock": "2454 聯發科",
+            "stock": "2330 台積電",
             "diff_pct": 2.2
           },
           {
-            "stock": "2330 台積電",
+            "stock": "2454 聯發科",
             "diff_pct": 2.2
           },
           {
@@ -1872,12 +1872,12 @@
         "removed": [],
         "top_weight_changes": [
           {
-            "stock": "2330 台積電",
-            "diff_pct": -1.0
-          },
-          {
             "stock": "2454 聯發科",
             "diff_pct": 1.0
+          },
+          {
+            "stock": "2330 台積電",
+            "diff_pct": -1.0
           }
         ]
       },
@@ -3325,11 +3325,11 @@
         "removed": [],
         "top_weight_changes": [
           {
-            "stock": "2308 台達電",
+            "stock": "2317 鴻海",
             "diff_pct": -1.8
           },
           {
-            "stock": "2317 鴻海",
+            "stock": "2308 台達電",
             "diff_pct": -1.8
           },
           {
@@ -4491,12 +4491,12 @@
         "removed": [],
         "top_weight_changes": [
           {
-            "stock": "2454 聯發科",
-            "diff_pct": -1.6
-          },
-          {
             "stock": "2330 台積電",
             "diff_pct": 1.6
+          },
+          {
+            "stock": "2454 聯發科",
+            "diff_pct": -1.6
           },
           {
             "stock": "2308 台達電",
@@ -4833,12 +4833,12 @@
             "diff_pct": 1.8
           },
           {
-            "stock": "2308 台達電",
-            "diff_pct": 1.5
-          },
-          {
             "stock": "2330 台積電",
             "diff_pct": -1.5
+          },
+          {
+            "stock": "2308 台達電",
+            "diff_pct": 1.5
           },
           {
             "stock": "2454 聯發科",
