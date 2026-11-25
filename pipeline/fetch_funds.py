@@ -30,7 +30,9 @@ def load_json_if_exists(path: str, default: dict) -> dict:
 
 
 def scrape_fundrich_tisa_list() -> dict:
-    """使用無頭 Chromium 載入基富通 TISA 專區並擷取完整清單與基準日"""
+    """使用無頭 Chromium 載入基富通 TISA 專區，同時攔截 JSON API 與掃描所有 Frame"""
+    captured_apis = []
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -41,49 +43,105 @@ def scrape_fundrich_tisa_list() -> dict:
             locale="zh-TW",
         )
         page = context.new_page()
-        page.goto(TISA_URL, wait_until="networkidle", timeout=60000)
-        page.wait_for_timeout(3000)
 
-        body_text = page.inner_text("body")
-        holdings_date_match = re.search(r"持股資料日[：:]\s*(\d{4}/\d{2}/\d{2})", body_text)
+        def handle_response(response):
+            content_type = response.headers.get("content-type", "")
+            if "application/json" in content_type or "text/json" in content_type:
+                try:
+                    text = response.text()
+                    if any(k in text for k in ["TISA", "fundCode", "FundCode", "基金", "SCH044", "YUI116"]):
+                        captured_apis.append(
+                            {
+                                "url": response.url,
+                                "status": response.status,
+                                "body_preview": text[:4000],
+                            }
+                        )
+                except Exception:
+                    pass
+
+        page.on("response", handle_response)
+        page.goto(TISA_URL, wait_until="domcontentloaded", timeout=60000)
+        try:
+            page.wait_for_load_state("networkidle", timeout=20000)
+        except Exception:
+            pass
+        page.wait_for_timeout(5000)
+
+        # 收集所有 frame 文字與候選基金列
+        all_text_parts = []
+        extracted_items = []
+        seen_ids = set()
+
+        print(f"[DEBUG] Frame 數量：{len(page.frames)}，攔截到相關 JSON API 數：{len(captured_apis)}")
+        for idx, fr in enumerate(page.frames):
+            try:
+                fr_text = fr.inner_text("body")
+            except Exception:
+                fr_text = ""
+            if fr_text.strip():
+                all_text_parts.append(fr_text)
+                print(f"[DEBUG] Frame[{idx}] url={fr.url} 文字長度={len(fr_text)}")
+
+            try:
+                rows = fr.evaluate(
+                    """() => {
+                        const results = [];
+                        const candidates = Array.from(document.querySelectorAll('tr, [role="row"], li, .fund-item, [class*="fund"]'));
+                        for (const el of candidates) {
+                            const txt = (el.innerText || '').trim();
+                            if (!txt || txt.length < 6 || txt.length > 600) continue;
+                            // 尋找疑似基金代碼（如 SCH044、YUI116 等 5~8 碼英數混合）
+                            const codeMatch = txt.match(/\\b([A-Z]{2,5}[0-9A-Z]{2,5})\\b/);
+                            const link = el.querySelector('a[href]');
+                            const href = link ? (link.getAttribute('href') || '') : '';
+                            const hrefCode = href.match(/(?:fundCode=|code=|\\/fund\\/)([A-Z0-9]{4,10})/i);
+                            const id = (hrefCode && hrefCode[1]) || (codeMatch && codeMatch[1]) || '';
+                            if (!id) continue;
+
+                            const lines = txt.split('\\n').map(s => s.trim()).filter(Boolean);
+                            const nameLine = lines.find(l => l.includes('基金') || l.includes('TISA')) || lines[0] || id;
+                            const rrMatch = txt.match(/RR[1-5]/);
+                            results.push({
+                                id: id.toUpperCase(),
+                                name: nameLine,
+                                risk_level: rrMatch ? rrMatch[0] : 'RR4',
+                                href,
+                                snippet: txt.slice(0, 180)
+                            });
+                        }
+                        return results;
+                    }"""
+                )
+                for r in rows:
+                    rid = r["id"]
+                    if rid and rid not in seen_ids:
+                        seen_ids.add(rid)
+                        extracted_items.append(
+                            {
+                                "id": rid,
+                                "name": r["name"],
+                                "issuer": "TISA合作投信",
+                                "risk_level": r["risk_level"],
+                            }
+                        )
+            except Exception as exc:
+                print(f"[DEBUG] Frame[{idx}] evaluate 失敗：{exc}")
+
+        combined_text = "\n".join(all_text_parts)
+        holdings_date_match = re.search(r"持股資料日[：:\s]*(\d{4}/\d{2}/\d{2})", combined_text)
         holdings_as_of = holdings_date_match.group(1) if holdings_date_match else "2026/10/31"
 
-        extracted = page.evaluate(
-            """() => {
-                const items = [];
-                const seen = new Set();
-                const links = Array.from(document.querySelectorAll('a[href]'));
-                for (const a of links) {
-                    const href = a.getAttribute('href') || '';
-                    const text = (a.innerText || '').trim();
-                    const codeMatch = href.match(/(?:fundCode=|\\/fund\\/)([A-Z0-9]{4,10})/i);
-                    if (codeMatch && text && text.length >= 4) {
-                        const id = codeMatch[1].toUpperCase();
-                        if (seen.has(id)) continue;
-                        seen.add(id);
-
-                        const row = a.closest('tr, li, [class*="item"], [class*="row"], [class*="card"]');
-                        const rowText = row ? row.innerText : text;
-                        const rrMatch = rowText.match(/RR[1-5]/);
-                        const issuerMatch = text.match(/^(元大|國泰|富邦|群益|統一|野村|安聯|摩根|貝萊德|聯博|施羅德|復華|保德信|台新|永豐|兆豐|第一金|華南永昌|日盛|凱基|中信|街口|瀚亞|景順|富達|鋒裕匯理|路博邁|百達|瑞銀|柏瑞)/);
-
-                        items.push({
-                            id,
-                            name: text.split('\\n')[0].trim(),
-                            issuer: issuerMatch ? issuerMatch[1] + '投信' : 'TISA合作投信',
-                            risk_level: rrMatch ? rrMatch[0] : 'RR4'
-                        });
-                    }
-                }
-                return items;
-            }"""
-        )
-
         browser.close()
-        return {
-            "holdings_as_of": holdings_as_of,
-            "funds": extracted,
-        }
+
+    os.makedirs("data", exist_ok=True)
+    with open("data/debug_api_responses.json", "w", encoding="utf-8") as dbg:
+        json.dump(captured_apis[:15], dbg, ensure_ascii=False, indent=2)
+
+    return {
+        "holdings_as_of": holdings_as_of,
+        "funds": extracted_items,
+    }
 
 
 def run_fetch():
@@ -101,9 +159,6 @@ def run_fetch():
 
     if not scraped_funds:
         print("[WARN] 本次未解析到基金列表。")
-        if prev_raw.get("funds"):
-            print("[INFO] 保留既有 data/raw_funds.json")
-            return
 
     merged_funds = []
     for item in scraped_funds:
