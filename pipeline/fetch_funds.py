@@ -21,6 +21,13 @@ ETF_BENCHMARKS = {
     },
 }
 
+ISSUER_KEYWORDS = [
+    "元大", "國泰", "富邦", "群益", "統一", "野村", "安聯", "摩根", "貝萊德",
+    "聯博", "施羅德", "復華", "保德信", "玉山", "台新", "永豐", "兆豐", "第一金",
+    "華南永昌", "凱基", "中信", "街口", "瀚亞", "景順", "富達", "鋒裕匯理",
+    "路博邁", "百達", "瑞銀", "柏瑞", "新光", "合庫", "台壽"
+]
+
 
 def load_json_if_exists(path: str, default: dict) -> dict:
     if os.path.exists(path):
@@ -29,10 +36,29 @@ def load_json_if_exists(path: str, default: dict) -> dict:
     return default
 
 
-def scrape_fundrich_tisa_list() -> dict:
-    """使用無頭 Chromium 載入基富通 TISA 專區，同時攔截 JSON API 與掃描所有 Frame"""
-    captured_apis = []
+def infer_issuer(name: str, context_text: str) -> str:
+    combined = f"{name} {context_text}"
+    for kw in ISSUER_KEYWORDS:
+        if kw in combined:
+            return f"{kw}投信"
+    return "TISA合作投信"
 
+
+def pick_best_fund_name(lines: list[str], fund_id: str) -> str:
+    # 優先挑出包含「基金」字樣的完整名稱
+    for line in lines:
+        cleaned = re.sub(r"^(代碼[：:]\s*[A-Z0-9]+|基金代號[：:]\s*[A-Z0-9]+)\s*", "", line).strip()
+        if "基金" in cleaned and len(cleaned) >= 4:
+            return cleaned
+    for line in lines:
+        cleaned = line.strip()
+        if len(cleaned) >= 4 and not re.fullmatch(r"(代碼[：:]\s*)?[A-Z0-9]{4,8}", cleaned):
+            return cleaned
+    return f"代碼：{fund_id}"
+
+
+def scrape_fundrich_tisa_list() -> dict:
+    """使用無頭 Chromium 載入基富通 TISA 專區，捲動/展開後擷取基金清單"""
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -43,37 +69,34 @@ def scrape_fundrich_tisa_list() -> dict:
             locale="zh-TW",
         )
         page = context.new_page()
-
-        def handle_response(response):
-            content_type = response.headers.get("content-type", "")
-            if "application/json" in content_type or "text/json" in content_type:
-                try:
-                    text = response.text()
-                    if any(k in text for k in ["TISA", "fundCode", "FundCode", "基金", "SCH044", "YUI116"]):
-                        captured_apis.append(
-                            {
-                                "url": response.url,
-                                "status": response.status,
-                                "body_preview": text[:4000],
-                            }
-                        )
-                except Exception:
-                    pass
-
-        page.on("response", handle_response)
         page.goto(TISA_URL, wait_until="domcontentloaded", timeout=60000)
         try:
             page.wait_for_load_state("networkidle", timeout=20000)
         except Exception:
             pass
-        page.wait_for_timeout(5000)
+        page.wait_for_timeout(4000)
 
-        # 收集所有 frame 文字與候選基金列
+        # 嘗試分段捲動並點擊可能的「看更多／下一頁」按鈕
+        for _ in range(8):
+            try:
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            except Exception:
+                pass
+            page.wait_for_timeout(1200)
+
+            for btn_text in ["看更多", "顯示更多", "載入更多", "下一頁", "全部"]:
+                try:
+                    btn = page.get_by_role("button", name=re.compile(btn_text)).first
+                    if btn.is_visible(timeout=400):
+                        btn.click(timeout=1500)
+                        page.wait_for_timeout(1200)
+                except Exception:
+                    pass
+
         all_text_parts = []
         extracted_items = []
         seen_ids = set()
 
-        print(f"[DEBUG] Frame 數量：{len(page.frames)}，攔截到相關 JSON API 數：{len(captured_apis)}")
         for idx, fr in enumerate(page.frames):
             try:
                 fr_text = fr.inner_text("body")
@@ -81,50 +104,59 @@ def scrape_fundrich_tisa_list() -> dict:
                 fr_text = ""
             if fr_text.strip():
                 all_text_parts.append(fr_text)
-                print(f"[DEBUG] Frame[{idx}] url={fr.url} 文字長度={len(fr_text)}")
 
             try:
                 rows = fr.evaluate(
                     """() => {
                         const results = [];
-                        const candidates = Array.from(document.querySelectorAll('tr, [role="row"], li, .fund-item, [class*="fund"]'));
+                        const candidates = Array.from(
+                            document.querySelectorAll('tr, [role="row"], li, .fund-item, [class*="fund"], [class*="list"]')
+                        );
                         for (const el of candidates) {
                             const txt = (el.innerText || '').trim();
-                            if (!txt || txt.length < 6 || txt.length > 600) continue;
-                            // 尋找疑似基金代碼（如 SCH044、YUI116 等 5~8 碼英數混合）
-                            const codeMatch = txt.match(/\\b([A-Z]{2,5}[0-9A-Z]{2,5})\\b/);
+                            if (!txt || txt.length < 5 || txt.length > 800) continue;
+
                             const link = el.querySelector('a[href]');
                             const href = link ? (link.getAttribute('href') || '') : '';
                             const hrefCode = href.match(/(?:fundCode=|code=|\\/fund\\/)([A-Z0-9]{4,10})/i);
-                            const id = (hrefCode && hrefCode[1]) || (codeMatch && codeMatch[1]) || '';
+
+                            // 常見台灣基金代號格式：3碼英數投信碼 + 3碼數字或英數（例如 SCH044、YUI116、0050 等）
+                            const codeMatches = Array.from(txt.matchAll(/\\b([A-Z0-9]{3}[0-9]{2,3}[A-Z0-9]?)\\b/g)).map(m => m[1]);
+                            const id = (hrefCode && hrefCode[1]) || (codeMatches.length ? codeMatches[0] : '');
                             if (!id) continue;
 
+                            const upperId = id.toUpperCase();
+                            if (['TISA', 'HTML', 'HTTP', 'HTTPS', 'RR1', 'RR2', 'RR3', 'RR4', 'RR5'].includes(upperId)) {
+                                continue;
+                            }
+
                             const lines = txt.split('\\n').map(s => s.trim()).filter(Boolean);
-                            const nameLine = lines.find(l => l.includes('基金') || l.includes('TISA')) || lines[0] || id;
                             const rrMatch = txt.match(/RR[1-5]/);
                             results.push({
-                                id: id.toUpperCase(),
-                                name: nameLine,
-                                risk_level: rrMatch ? rrMatch[0] : 'RR4',
-                                href,
-                                snippet: txt.slice(0, 180)
+                                id: upperId,
+                                lines,
+                                fullText: txt,
+                                risk_level: rrMatch ? rrMatch[0] : 'RR4'
                             });
                         }
                         return results;
                     }"""
                 )
+
                 for r in rows:
                     rid = r["id"]
-                    if rid and rid not in seen_ids:
-                        seen_ids.add(rid)
-                        extracted_items.append(
-                            {
-                                "id": rid,
-                                "name": r["name"],
-                                "issuer": "TISA合作投信",
-                                "risk_level": r["risk_level"],
-                            }
-                        )
+                    if not rid or rid in seen_ids:
+                        continue
+                    seen_ids.add(rid)
+                    best_name = pick_best_fund_name(r["lines"], rid)
+                    extracted_items.append(
+                        {
+                            "id": rid,
+                            "name": best_name,
+                            "issuer": infer_issuer(best_name, r["fullText"]),
+                            "risk_level": r["risk_level"],
+                        }
+                    )
             except Exception as exc:
                 print(f"[DEBUG] Frame[{idx}] evaluate 失敗：{exc}")
 
@@ -133,10 +165,6 @@ def scrape_fundrich_tisa_list() -> dict:
         holdings_as_of = holdings_date_match.group(1) if holdings_date_match else "2026/10/31"
 
         browser.close()
-
-    os.makedirs("data", exist_ok=True)
-    with open("data/debug_api_responses.json", "w", encoding="utf-8") as dbg:
-        json.dump(captured_apis[:15], dbg, ensure_ascii=False, indent=2)
 
     return {
         "holdings_as_of": holdings_as_of,
