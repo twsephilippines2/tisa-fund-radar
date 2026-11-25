@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-11-25 15:24",
+  "updated_at": "2026-11-25 15:28",
   "holdings_as_of": "2026/10/31",
   "source": "基富通 FundRich TISA 專區",
-  "total_count": 20,
+  "total_count": 29,
   "funds": [
     {
       "id": "MEG083",
@@ -598,6 +598,285 @@
       "name": "【TISA級別】永豐永豐證券投資信託基金TISA類型",
       "issuer": "永豐投信",
       "tisa_type": "TISA級別",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "SCH004",
+      "name": "施羅德台灣樂活中小基金 - A類型",
+      "issuer": "施羅德投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "YUI064",
+      "name": "元大高科技證券投資信託基金",
+      "issuer": "元大投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "NOM003",
+      "name": "野村中小證券投資信託基金",
+      "issuer": "野村投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "YUI065",
+      "name": "元大經貿證券投資信託基金",
+      "issuer": "元大投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "ALI006",
+      "name": "安聯台灣科技基金",
+      "issuer": "安聯投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "YUI066",
+      "name": "元大多多證券投資信託基金",
+      "issuer": "元大投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "NOM004",
+      "name": "野村鴻運基金─累積類型",
+      "issuer": "野村投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "UNI029",
+      "name": "統一中小基金",
+      "issuer": "統一投信",
+      "tisa_type": "TISA專區",
+      "category": "TISA精選基金",
+      "risk_level": "RR4",
+      "ter_pct": 0.0,
+      "rule_note": "基富通 TISA 專區適用標的（享專屬經理費與0手續費優惠）",
+      "tech_exposure_pct": 0.0,
+      "tsmc_pct": 0.0,
+      "overlap_0050_pct": 0.0,
+      "overlap_00878_pct": 0.0,
+      "risk": {
+        "max_drawdown_pct": 0.0,
+        "annual_volatility_pct": 0.0,
+        "sharpe_ratio": 0.0
+      },
+      "holdings_diff": {
+        "added": [],
+        "removed": [],
+        "top_weight_changes": []
+      },
+      "top_holdings": [],
+      "ai_diagnosis": {
+        "style_mismatch_flag": false,
+        "mismatch_badge": "已收錄清單",
+        "plain_summary": "已自基富通 TISA 專區收錄（風險等級 RR4），待補齊單檔持股與淨值明細後即可進行深度穿透診斷。",
+        "radar_action_note": "等待補齊月報前十大持股明細。"
+      }
+    },
+    {
+      "id": "NOM006",
+      "name": "野村台灣運籌證券投資信託基金",
+      "issuer": "野村投信",
+      "tisa_type": "TISA專區",
       "category": "TISA精選基金",
       "risk_level": "RR4",
       "ter_pct": 0.0,
